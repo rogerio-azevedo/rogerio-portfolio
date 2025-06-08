@@ -1,11 +1,10 @@
-"use client";
-import React from "react";
-import { motion } from "motion/react";
-import dynamic from "next/dynamic";
+"use client"
+
+import dynamic from "next/dynamic"
 
 const World = dynamic(() => import("./Globe").then((m) => m.World), {
   ssr: false,
-});
+})
 
 export function GridGlobe() {
   const globeConfig = {
@@ -29,8 +28,8 @@ export function GridGlobe() {
     initialPosition: { lat: 22.3193, lng: 114.1694 },
     autoRotate: true,
     autoRotateSpeed: 0.5,
-  };
-  const colors = ["#06b6d4", "#3b82f6", "#6366f1"];
+  }
+  const colors = ["#06b6d4", "#3b82f6", "#6366f1"]
   const sampleArcs = [
     {
       order: 1,
@@ -392,7 +391,7 @@ export function GridGlobe() {
       arcAlt: 0.3,
       color: colors[Math.floor(Math.random() * (colors.length - 1))],
     },
-  ];
+  ]
 
   return (
     <div className="flex items-center justify-center absolute -left-5 top-36 md:top-40 w-full h-full">
@@ -425,5 +424,5 @@ export function GridGlobe() {
         </div>
       </div>
     </div>
-  );
+  )
 }

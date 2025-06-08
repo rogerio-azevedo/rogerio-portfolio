@@ -1,12 +1,10 @@
-import React from "react";
-
 type MagicButtonProps = {
-  title: string;
-  icon: React.ReactNode;
-  position: string;
-  handleClick?: () => void;
-  otherClasses?: string;
-};
+  title: string
+  icon: React.ReactNode
+  position: string
+  handleClick?: () => void
+  otherClasses?: string
+}
 
 export const MagicButton = ({
   title,
@@ -30,5 +28,5 @@ export const MagicButton = ({
         {position === "right" && icon}
       </span>
     </button>
-  );
-};
+  )
+}

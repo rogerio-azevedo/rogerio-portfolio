@@ -1,10 +1,9 @@
-import React from "react";
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/utils"
 
 type SpotlightProps = {
-  className?: string;
-  fill?: string;
-};
+  className?: string
+  fill?: string
+}
 
 export const Spotlight = ({ className, fill }: SpotlightProps) => {
   return (
@@ -52,5 +51,5 @@ export const Spotlight = ({ className, fill }: SpotlightProps) => {
         </filter>
       </defs>
     </svg>
-  );
-};
+  )
+}
