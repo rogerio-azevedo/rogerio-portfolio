@@ -1,10 +1,9 @@
-import React from "react";
-import { Spotlight } from "../ui/Spotlight";
-import { GridBackground } from "../ui/GridBackground";
-import { TextGenerateEffect } from "../ui/TextGenerateEffect";
-import { MagicButton } from "../ui/MagicButton";
-import { FaLocationArrow } from "react-icons/fa";
-import { GridGlobe } from "../ui/GridGlobe";
+import React from "react"
+import { Spotlight } from "../ui/Spotlight"
+import { GridBackground } from "../ui/GridBackground"
+import { TextGenerateEffect } from "../ui/TextGenerateEffect"
+import { MagicButton } from "../ui/MagicButton"
+import { FaLocationArrow } from "react-icons/fa"
 
 export const Hero = () => {
   return (
@@ -47,5 +46,5 @@ export const Hero = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}

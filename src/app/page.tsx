@@ -1,7 +1,10 @@
-import { Hero } from "@/components/Hero";
-import { FloatingNav } from "@/components/ui/FloatingNav";
-import { navItems } from "@/data";
-import { Grid } from "@/components/Grid";
+import { FloatingNav } from "@/components/ui/FloatingNav"
+
+import { Grid } from "@/components/Grid"
+import { Hero } from "@/components/Hero"
+import { RecentProjects } from "@/components/RecentProjects"
+
+import { navItems } from "@/data"
 
 export default function Home() {
   return (
@@ -10,7 +13,8 @@ export default function Home() {
         <FloatingNav navItems={navItems} />
         <Hero />
         <Grid />
+        <RecentProjects />
       </div>
     </main>
-  );
+  )
 }
