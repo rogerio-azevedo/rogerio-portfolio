@@ -15,7 +15,7 @@ const techStacks = [
     icon: '/tech/react.svg',
     description: 'Cross-Platform Mobile Framework',
     category: 'Mobile',
-    level: 90,
+    level: 'Avançado',
     color: 'from-blue-600 to-cyan-600',
   },
   {
@@ -23,7 +23,7 @@ const techStacks = [
     icon: '/tech/react.svg',
     description: 'Modern UI Library',
     category: 'Frontend',
-    level: 90,
+    level: 'Avançado',
     color: 'from-blue-400 to-cyan-400',
   },
   {
@@ -31,7 +31,7 @@ const techStacks = [
     icon: '/tech/next.svg',
     description: 'React Framework',
     category: 'Frontend',
-    level: 85,
+    level: 'Avançado',
     color: 'from-gray-300 to-white',
   },
   {
@@ -39,7 +39,7 @@ const techStacks = [
     icon: '/tech/typescript.svg',
     description: 'Type-Safe JavaScript',
     category: 'Language',
-    level: 90,
+    level: 'Avançado',
     color: 'from-blue-500 to-blue-600',
   },
   {
@@ -47,7 +47,7 @@ const techStacks = [
     icon: '/tech/javascript.svg',
     description: 'Programming Language',
     category: 'Language',
-    level: 90,
+    level: 'Avançado',
     color: 'from-yellow-400 to-yellow-500',
   },
   {
@@ -55,7 +55,7 @@ const techStacks = [
     icon: '/tech/tailwind.svg',
     description: 'Utility-First CSS',
     category: 'Styling',
-    level: 88,
+    level: 'Avançado',
     color: 'from-teal-400 to-blue-500',
   },
   {
@@ -63,7 +63,7 @@ const techStacks = [
     icon: '/tech/nodejs.svg',
     description: 'JavaScript Runtime',
     category: 'Backend',
-    level: 80,
+    level: 'Avançado',
     color: 'from-green-400 to-green-600',
   },
   {
@@ -71,7 +71,7 @@ const techStacks = [
     icon: '/tech/nestjs.svg',
     description: 'Node.js Framework',
     category: 'Backend',
-    level: 80,
+    level: 'Avançado',
     color: 'from-red-500 to-pink-500',
   },
   {
@@ -79,7 +79,7 @@ const techStacks = [
     icon: '/tech/graphql.svg',
     description: 'Query Language',
     category: 'API',
-    level: 80,
+    level: 'Avançado',
     color: 'from-pink-500 to-purple-500',
   },
   {
@@ -87,7 +87,7 @@ const techStacks = [
     icon: '/tech/aws.svg',
     description: 'Cloud Services',
     category: 'Cloud',
-    level: 60,
+    level: 'Intermediário',
     color: 'from-orange-400 to-yellow-500',
   },
   {
@@ -95,7 +95,7 @@ const techStacks = [
     icon: '/tech/csharp.svg',
     description: 'Programming Language',
     category: 'Language',
-    level: 50,
+    level: 'Intermediário',
     color: 'from-purple-400 to-purple-500',
   },
   {
@@ -103,7 +103,7 @@ const techStacks = [
     icon: '/tech/python.svg',
     description: 'Versatile Programming Language',
     category: 'Language',
-    level: 40,
+    level: 'Iniciante',
     color: 'from-blue-400 to-yellow-400',
   },
 ]
@@ -171,7 +171,7 @@ const TechCard = ({
           </motion.div>
         )}
 
-        <div className="relative z-10 flex flex-col items-center space-y-4 text-center">
+        <div className="relative z-10 flex h-full flex-col items-center justify-between space-y-4 text-center">
           {/* Tech Icon */}
           <motion.div
             className="relative"
@@ -188,31 +188,49 @@ const TechCard = ({
             </div>
           </motion.div>
 
-          {/* Tech Name */}
-          <h3 className="text-xl font-bold text-white">{tech.name}</h3>
+          {/* Content Section */}
+          <div className="flex flex-col items-center space-y-3 text-center">
+            {/* Tech Name */}
+            <h3 className="text-xl font-bold text-white">{tech.name}</h3>
 
-          {/* Description */}
-          <p className="text-sm text-gray-300">{tech.description}</p>
+            {/* Description */}
+            <p className="text-sm text-gray-300">{tech.description}</p>
+          </div>
 
-          {/* Category Badge */}
-          <span
-            className={`inline-block bg-gradient-to-r px-3 py-1 text-xs font-medium ${tech.color} rounded-full text-black`}>
-            {tech.category}
-          </span>
-
-          {/* Skill Level Bar */}
+          {/* Skill Level Badge - Now at bottom */}
           <div className="w-full">
-            <div className="mb-2 flex justify-between text-xs text-gray-400">
-              <span>Proficiency</span>
-              <span>{tech.level}%</span>
-            </div>
-            <div className="h-2 w-full rounded-full bg-gray-700">
-              <motion.div
-                className={`h-2 bg-gradient-to-r ${tech.color} rounded-full`}
-                initial={{ width: 0 }}
-                animate={{ width: `${tech.level}%` }}
-                transition={{ duration: 1, delay: index * 0.1 + 0.5 }}
-              />
+            <div className="flex items-center justify-between gap-2">
+              {/* Category Badge - Left */}
+              <span
+                className={`inline-block bg-gradient-to-r px-3 py-1 text-xs font-medium ${tech.color} rounded-full text-black`}>
+                {tech.category}
+              </span>
+
+              {/* Experience Level Badge - Right */}
+              <motion.span
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5, delay: index * 0.1 + 0.5 }}
+                className={`inline-flex items-center rounded-full px-3 py-1 text-xs font-medium ${
+                  tech.level === 'Especialista'
+                    ? 'bg-gradient-to-r from-green-500 to-emerald-500 text-white'
+                    : tech.level === 'Avançado'
+                      ? 'bg-gradient-to-r from-blue-500 to-indigo-500 text-white'
+                      : tech.level === 'Intermediário'
+                        ? 'bg-gradient-to-r from-green-500 to-green-700 text-white'
+                        : 'bg-gradient-to-r from-gray-500 to-slate-500 text-white'
+                }`}>
+                <span className="mr-1">
+                  {tech.level === 'Especialista'
+                    ? '🏆'
+                    : tech.level === 'Avançado'
+                      ? '🎯'
+                      : tech.level === 'Intermediário'
+                        ? '📈'
+                        : '🌱'}
+                </span>
+                {tech.level}
+              </motion.span>
             </div>
           </div>
         </div>

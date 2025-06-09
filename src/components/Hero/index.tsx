@@ -21,7 +21,7 @@ export const Hero = () => {
   }
 
   return (
-    <div className="pt-36 pb-20">
+    <div className="pt-36 pb-20 lg:pb-40">
       <div>
         <Spotlight
           className="-top-40 -left-10 h-screen md:-top-20 md:-left-32"
