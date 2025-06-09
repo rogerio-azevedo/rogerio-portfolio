@@ -15,7 +15,7 @@ const techStacks = [
     icon: '/tech/react.svg',
     description: 'Cross-Platform Mobile Framework',
     category: 'Mobile',
-    level: 'Avançado',
+    level: 'Advanced',
     color: 'from-blue-600 to-cyan-600',
   },
   {
@@ -23,7 +23,7 @@ const techStacks = [
     icon: '/tech/react.svg',
     description: 'Modern UI Library',
     category: 'Frontend',
-    level: 'Avançado',
+    level: 'Advanced',
     color: 'from-blue-400 to-cyan-400',
   },
   {
@@ -31,7 +31,7 @@ const techStacks = [
     icon: '/tech/next.svg',
     description: 'React Framework',
     category: 'Frontend',
-    level: 'Avançado',
+    level: 'Advanced',
     color: 'from-gray-300 to-white',
   },
   {
@@ -39,7 +39,7 @@ const techStacks = [
     icon: '/tech/typescript.svg',
     description: 'Type-Safe JavaScript',
     category: 'Language',
-    level: 'Avançado',
+    level: 'Advanced',
     color: 'from-blue-500 to-blue-600',
   },
   {
@@ -47,7 +47,7 @@ const techStacks = [
     icon: '/tech/javascript.svg',
     description: 'Programming Language',
     category: 'Language',
-    level: 'Avançado',
+    level: 'Advanced',
     color: 'from-yellow-400 to-yellow-500',
   },
   {
@@ -55,7 +55,7 @@ const techStacks = [
     icon: '/tech/tailwind.svg',
     description: 'Utility-First CSS',
     category: 'Styling',
-    level: 'Avançado',
+    level: 'Advanced',
     color: 'from-teal-400 to-blue-500',
   },
   {
@@ -63,7 +63,7 @@ const techStacks = [
     icon: '/tech/nodejs.svg',
     description: 'JavaScript Runtime',
     category: 'Backend',
-    level: 'Avançado',
+    level: 'Advanced',
     color: 'from-green-400 to-green-600',
   },
   {
@@ -71,7 +71,7 @@ const techStacks = [
     icon: '/tech/nestjs.svg',
     description: 'Node.js Framework',
     category: 'Backend',
-    level: 'Avançado',
+    level: 'Advanced',
     color: 'from-red-500 to-pink-500',
   },
   {
@@ -79,7 +79,7 @@ const techStacks = [
     icon: '/tech/graphql.svg',
     description: 'Query Language',
     category: 'API',
-    level: 'Avançado',
+    level: 'Advanced',
     color: 'from-pink-500 to-purple-500',
   },
   {
@@ -87,7 +87,7 @@ const techStacks = [
     icon: '/tech/aws.svg',
     description: 'Cloud Services',
     category: 'Cloud',
-    level: 'Intermediário',
+    level: 'Intermediate',
     color: 'from-orange-400 to-yellow-500',
   },
   {
@@ -95,7 +95,7 @@ const techStacks = [
     icon: '/tech/csharp.svg',
     description: 'Programming Language',
     category: 'Language',
-    level: 'Intermediário',
+    level: 'Intermediate',
     color: 'from-purple-400 to-purple-500',
   },
   {
@@ -103,7 +103,7 @@ const techStacks = [
     icon: '/tech/python.svg',
     description: 'Versatile Programming Language',
     category: 'Language',
-    level: 'Iniciante',
+    level: 'Beginner',
     color: 'from-blue-400 to-yellow-400',
   },
 ]
@@ -116,6 +116,14 @@ const TechCard = ({
   index: number
 }) => {
   const [isHovered, setIsHovered] = useState(false)
+
+  const handleInteractionStart = () => {
+    setIsHovered(true)
+  }
+
+  const handleInteractionEnd = () => {
+    setIsHovered(false)
+  }
 
   return (
     <motion.div
@@ -131,14 +139,24 @@ const TechCard = ({
         scale: 1.05,
         transition: { duration: 0.2 },
       }}
-      onHoverStart={() => setIsHovered(true)}
-      onHoverEnd={() => setIsHovered(false)}
+      whileTap={{
+        y: -10,
+        scale: 1.05,
+        transition: { duration: 0.2 },
+      }}
+      onHoverStart={handleInteractionStart}
+      onHoverEnd={handleInteractionEnd}
+      onTouchStart={handleInteractionStart}
+      onTouchEnd={handleInteractionEnd}
       className="group relative">
       <div className="relative h-full overflow-hidden rounded-2xl border border-gray-700/50 bg-gradient-to-br from-gray-900/50 to-gray-800/50 p-6 backdrop-blur-sm">
         {/* Glow effect */}
         <motion.div
-          className={`absolute inset-0 bg-gradient-to-r ${tech.color} rounded-2xl opacity-0 transition-opacity duration-300 group-hover:opacity-20`}
-          animate={isHovered ? { scale: 1.05 } : { scale: 1 }}
+          className={`absolute inset-0 bg-gradient-to-r ${tech.color} rounded-2xl transition-opacity duration-300`}
+          animate={
+            isHovered ? { scale: 1.05, opacity: 0.2 } : { scale: 1, opacity: 0 }
+          }
+          transition={{ duration: 0.3 }}
         />
 
         {/* Floating particles effect */}
@@ -212,20 +230,20 @@ const TechCard = ({
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5, delay: index * 0.1 + 0.5 }}
                 className={`inline-flex items-center rounded-full px-3 py-1 text-xs font-medium ${
-                  tech.level === 'Especialista'
+                  tech.level === 'Expert'
                     ? 'bg-gradient-to-r from-green-500 to-emerald-500 text-white'
-                    : tech.level === 'Avançado'
+                    : tech.level === 'Advanced'
                       ? 'bg-gradient-to-r from-blue-500 to-indigo-500 text-white'
-                      : tech.level === 'Intermediário'
+                      : tech.level === 'Intermediate'
                         ? 'bg-gradient-to-r from-green-500 to-green-700 text-white'
                         : 'bg-gradient-to-r from-gray-500 to-slate-500 text-white'
                 }`}>
                 <span className="mr-1">
-                  {tech.level === 'Especialista'
+                  {tech.level === 'Expert'
                     ? '🏆'
-                    : tech.level === 'Avançado'
+                    : tech.level === 'Advanced'
                       ? '🎯'
-                      : tech.level === 'Intermediário'
+                      : tech.level === 'Intermediate'
                         ? '📈'
                         : '🌱'}
                 </span>
