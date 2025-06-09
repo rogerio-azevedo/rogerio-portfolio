@@ -1,14 +1,14 @@
-"use client"
+'use client'
 
-import { useEffect } from "react"
-import { motion, stagger, useAnimate } from "motion/react"
-import { cn } from "@/lib/utils"
+import { useEffect } from 'react'
+import { motion, stagger, useAnimate } from 'motion/react'
+import { cn } from '@/lib/utils'
 
 export const TextGenerateEffect = ({
   words,
   className,
   filter = true,
-  duration = 0.5,
+  duration = 0.8,
 }: {
   words: string
   className?: string
@@ -16,18 +16,18 @@ export const TextGenerateEffect = ({
   duration?: number
 }) => {
   const [scope, animate] = useAnimate()
-  let wordsArray = words.split(" ")
+  let wordsArray = words.split(' ')
   useEffect(() => {
     animate(
-      "span",
+      'span',
       {
         opacity: 1,
-        filter: filter ? "blur(0px)" : "none",
+        filter: filter ? 'blur(0px)' : 'none',
       },
       {
         duration: duration ? duration : 1,
         delay: stagger(0.2),
-      }
+      },
     )
   }, [scope.current])
 
@@ -39,13 +39,12 @@ export const TextGenerateEffect = ({
             <motion.span
               key={word + idx}
               className={` ${
-                idx > 3 ? "text-purple-300" : "dark:text-white text-black"
+                idx > 8 ? 'text-purple-300' : 'text-black dark:text-white'
               } opacity-0`}
               style={{
-                filter: filter ? "blur(10px)" : "none",
-              }}
-            >
-              {word}{" "}
+                filter: filter ? 'blur(10px)' : 'none',
+              }}>
+              {word}{' '}
             </motion.span>
           )
         })}
@@ -54,9 +53,9 @@ export const TextGenerateEffect = ({
   }
 
   return (
-    <div className={cn("font-bold", className)}>
+    <div className={cn('font-bold', className)}>
       <div className="my-4">
-        <div className=" dark:text-white text-black leading-snug tracking-wide">
+        <div className="leading-snug tracking-wide text-black dark:text-white">
           {renderWords()}
         </div>
       </div>

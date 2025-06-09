@@ -1,33 +1,34 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { cn } from "@/lib/utils"
-import { BackgroundGradientAnimation } from "./BackgroundGradientAnimation"
-import { GridGlobe } from "./GridGlobe"
-import { MagicButton } from "./MagicButton"
-import { IoCopyOutline } from "react-icons/io5"
-import animationData from "@/data/confetti.json"
-import Lottie from "react-lottie"
+import { useState } from "react";
+import Lottie from "react-lottie";
+import { IoCopyOutline } from "react-icons/io5";
+
+import animationData from "@/data/confetti.json";
+import { cn } from "@/lib/utils";
+import { BackgroundGradient } from "./BackgroundGradient";
+import { GridGlobe } from "./GridGlobe";
+import { MagicButton } from "./MagicButton";
 
 type BentoGridItemProps = {
-  className?: string
-  title?: string | React.ReactNode
-  description?: string | React.ReactNode
-  id?: number
-  img?: string
-  imgClassName?: string
-  titleClassName?: string
-  spareImg?: string
-  header?: React.ReactNode
-  icon?: React.ReactNode
-}
+  className?: string;
+  title?: string | React.ReactNode;
+  description?: string | React.ReactNode;
+  id?: number;
+  img?: string;
+  imgClassName?: string;
+  titleClassName?: string;
+  spareImg?: string;
+  header?: React.ReactNode;
+  icon?: React.ReactNode;
+};
 
 export const BentoGrid = ({
   className,
   children,
 }: {
-  className?: string
-  children?: React.ReactNode
+  className?: string;
+  children?: React.ReactNode;
 }) => {
   return (
     <div
@@ -38,8 +39,8 @@ export const BentoGrid = ({
     >
       {children}
     </div>
-  )
-}
+  );
+};
 
 export const BentoGridItem = ({
   className,
@@ -51,10 +52,10 @@ export const BentoGridItem = ({
   titleClassName,
   spareImg,
 }: BentoGridItemProps) => {
-  const leftLists = ["ReactJS", "Express", "Typescript"]
-  const rightLists = ["VueJS", "NuxtJS", "GraphQL"]
+  const leftLists = ["ReactJS", "Express", "Typescript"];
+  const rightLists = ["VueJS", "NuxtJS", "GraphQL"];
 
-  const [copied, setCopied] = useState(false)
+  const [copied, setCopied] = useState(false);
 
   const defaultOptions = {
     loop: copied,
@@ -63,13 +64,13 @@ export const BentoGridItem = ({
     rendererSettings: {
       preserveAspectRatio: "xMidYMid slice",
     },
-  }
+  };
 
   const handleCopy = () => {
-    const text = "rogerio.francis@gmail.com"
-    navigator.clipboard.writeText(text)
-    setCopied(true)
-  }
+    const text = "rogerio.francis@gmail.com";
+    navigator.clipboard.writeText(text);
+    setCopied(true);
+  };
 
   return (
     <div
@@ -108,7 +109,7 @@ export const BentoGridItem = ({
           )}
         </div>
 
-        {id === 6 && <BackgroundGradientAnimation />}
+        {id === 6 && <BackgroundGradient />}
 
         <div
           className={cn(
@@ -181,5 +182,5 @@ export const BentoGridItem = ({
         </div>
       </div>
     </div>
-  )
-}
+  );
+};

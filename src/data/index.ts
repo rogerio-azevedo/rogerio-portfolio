@@ -3,7 +3,7 @@ export const navItems = [
   { name: "Projects", link: "#projects" },
   { name: "Testimonials", link: "#testimonials" },
   { name: "Contact", link: "#contact" },
-];
+]
 
 export const gridItems = [
   {
@@ -67,7 +67,7 @@ export const gridItems = [
     img: "",
     spareImg: "",
   },
-];
+]
 
 export const projects = [
   {
@@ -102,7 +102,7 @@ export const projects = [
     iconLists: ["/next.svg", "/tail.svg", "/ts.svg", "/three.svg", "/gsap.svg"],
     link: "/ui.apple.com",
   },
-];
+]
 
 export const testimonials = [
   {
@@ -135,7 +135,7 @@ export const testimonials = [
     name: "Michael Johnson",
     title: "Director of AlphaStream Technologies",
   },
-];
+]
 
 export const companies = [
   {
@@ -168,7 +168,7 @@ export const companies = [
     img: "/dock.svg",
     nameImg: "/dockerName.svg",
   },
-];
+]
 
 export const workExperience = [
   {
@@ -199,12 +199,13 @@ export const workExperience = [
     className: "md:col-span-2",
     thumbnail: "/exp4.svg",
   },
-];
+]
 
 export const socialMedia = [
   {
     id: 1,
     img: "/git.svg",
+    link: "https://github.com/rogerio-azevedo",
   },
   {
     id: 2,
@@ -213,5 +214,6 @@ export const socialMedia = [
   {
     id: 3,
     img: "/link.svg",
+    link: "https://www.linkedin.com/in/rogerio-fazevedo",
   },
-];
+]
