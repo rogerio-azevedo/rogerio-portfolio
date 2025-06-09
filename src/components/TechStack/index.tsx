@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
+import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { cn } from '@/lib/utils'
 
@@ -177,9 +178,11 @@ const TechCard = ({
             animate={isHovered ? { rotate: 360 } : { rotate: 0 }}
             transition={{ duration: 0.8, ease: 'easeInOut' }}>
             <div className="flex h-16 w-16 items-center justify-center rounded-xl bg-white/10 backdrop-blur-sm">
-              <img
+              <Image
                 src={tech.icon}
                 alt={tech.name}
+                width={24}
+                height={24}
                 className="h-10 w-10 object-contain"
               />
             </div>

@@ -1,38 +1,40 @@
-import { workExperience } from "@/data";
-import { Button } from "../ui/MovingBorder";
+import { workExperience } from '@/data'
+import { Button } from '../ui/MovingBorder'
+import Image from 'next/image'
 
 export const Experience = () => {
   return (
-    <div className="py-10 md:py-20 w-full relative z-10">
-      <h1 className="font-bold text-4xl md:text-5xl text-center">
+    <div className="relative z-10 w-full py-10 md:py-20">
+      <h1 className="text-center text-4xl font-bold md:text-5xl">
         My <span className="text-purple-300">work experience</span>
       </h1>
 
-      <div className="w-full mt-12 grid lg:grid-cols-4 grid-cols-1 gap-10">
-        {workExperience.map((card) => (
+      <div className="mt-12 grid w-full grid-cols-1 gap-10 lg:grid-cols-4">
+        {workExperience.map(card => (
           <Button
             key={card.id}
             duration={Math.floor(Math.random() * 10000) + 10000}
             borderRadius="1.75rem"
             style={{
-              background: "rgb(4,7,29)",
+              background: 'rgb(4,7,29)',
               backgroundColor:
-                "linear-gradient(90deg, rgba(4,7,29,1) 0%, rgba(12,14,35,1) 100%)",
+                'linear-gradient(90deg, rgba(4,7,29,1) 0%, rgba(12,14,35,1) 100%)',
               borderRadius: `calc(1.75rem* 0.96)`,
             }}
-            className="flex-1 text-black dark:text-white border-neutral-200 dark:border-slate-800"
-          >
-            <div className="flex lg:flex-row flex-col lg:items-center p-3 py-6 md:p-5 lg:p-10 gap-2">
-              <img
+            className="flex-1 border-neutral-200 text-black dark:border-slate-800 dark:text-white">
+            <div className="flex flex-col gap-2 p-3 py-6 md:p-5 lg:flex-row lg:items-center lg:p-10">
+              <Image
                 src={card.thumbnail}
                 alt={card.thumbnail}
-                className="lg:w-32 md:w-20 w-16"
+                width={128}
+                height={128}
+                className="w-16 md:w-20 lg:w-32"
               />
               <div className="lg:ms-5">
-                <h1 className="text-start text-xl md:text-2xl font-bold">
+                <h1 className="text-start text-xl font-bold md:text-2xl">
                   {card.title}
                 </h1>
-                <p className="text-start text-white-100 mt-3 font-semibold">
+                <p className="text-white-100 mt-3 text-start font-semibold">
                   {card.desc}
                 </p>
               </div>
@@ -41,5 +43,5 @@ export const Experience = () => {
         ))}
       </div>
     </div>
-  );
-};
+  )
+}

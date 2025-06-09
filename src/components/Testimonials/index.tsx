@@ -1,13 +1,14 @@
-"use client";
+'use client'
 
-import React from "react";
-import { companies, testimonials } from "@/data";
-import { InfiniteCards } from "../ui/InfiniteCards";
+import React from 'react'
+import Image from 'next/image'
+import { companies, testimonials } from '@/data'
+import { InfiniteCards } from '../ui/InfiniteCards'
 
 export const Testimonials = () => {
   return (
-    <section id="testimonials" className="py-20 relative z-10">
-      <h1 className="font-bold text-4xl md:text-5xl text-center">
+    <section id="testimonials" className="relative z-10 py-20">
+      <h1 className="text-center text-4xl font-bold md:text-5xl">
         Kind words from
         <span className="text-purple-300"> satisfied clients</span>
       </h1>
@@ -15,20 +16,23 @@ export const Testimonials = () => {
       <div className="flex flex-col items-center max-lg:mt-10">
         <InfiniteCards items={testimonials} direction="right" speed="slow" />
 
-        <div className="flex flex-wrap items-center justify-center gap-4 md:gap-16 max-lg:mt-10">
-          {companies.map((company) => (
+        <div className="flex flex-wrap items-center justify-center gap-4 max-lg:mt-10 md:gap-16">
+          {companies.map(company => (
             <React.Fragment key={company.id}>
-              <div className="flex md:max-w-60 max-w-32 gap-2">
-                <img
+              <div className="flex max-w-32 gap-2 md:max-w-60">
+                <Image
                   src={company.img}
                   alt={company.name}
-                  className="md:w-10 w-5"
+                  width={40}
+                  height={40}
+                  className="w-5 md:w-10"
                 />
-                <img
+                <Image
                   src={company.nameImg}
                   alt={company.name}
                   width={company.id === 4 || company.id === 5 ? 100 : 150}
-                  className="md:w-24 w-20"
+                  height={40}
+                  className="w-20 md:w-24"
                 />
               </div>
             </React.Fragment>
@@ -36,5 +40,5 @@ export const Testimonials = () => {
         </div>
       </div>
     </section>
-  );
-};
+  )
+}

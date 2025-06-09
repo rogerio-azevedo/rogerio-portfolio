@@ -1,66 +1,77 @@
-import { projects } from "@/data";
-import { PinContainer } from "../ui/Pin";
-import { FaLocationArrow } from "react-icons/fa";
+import { projects } from '@/data'
+import { PinContainer } from '../ui/Pin'
+import { FaLocationArrow } from 'react-icons/fa'
+import Image from 'next/image'
 
 export const RecentProjects = () => {
   return (
-    <div className="py-10 md:py-20 relative z-10" id="projects">
-      <h1 className="font-bold text-4xl md:text-5xl text-center">
-        A small selection of{" "}
+    <div className="relative z-10 py-10 md:py-20" id="projects">
+      <h1 className="text-center text-4xl font-bold md:text-5xl">
+        A small selection of{' '}
         <span className="text-purple-300">recent projects</span>
       </h1>
-      <div className="flex flex-wrap items-center justify-center p-4 gap-x-24 gap-y-4 md:gap-y-16 lg:gap-y-40 md:mt-8 lg:mt-12">
-        {projects.map((item) => (
+      <div className="flex flex-wrap items-center justify-center gap-x-24 gap-y-4 p-4 md:mt-8 md:gap-y-16 lg:mt-12 lg:gap-y-40">
+        {projects.map(item => (
           <div
-            className="sm:h-[41rem] h-[32rem] lg:min-h-[32.5rem] flex items-center justify-center sm:w-[570px] w-[80vw]"
-            key={item.id}
-          >
+            className="flex h-[32rem] w-[80vw] items-center justify-center sm:h-[41rem] sm:w-[570px] lg:min-h-[32.5rem]"
+            key={item.id}>
             <PinContainer
               title="/ui.aceternity.com"
-              href="https://twitter.com/mannupaaji"
-            >
-              <div className="relative flex items-center justify-center sm:w-[570px] w-[80vw] overflow-hidden sm:h-[40vh] h-[30vh] mb-10">
-                <div className="relative w-full h-full overflow-hidden lg:rounded-3xl bg-[#13162D]">
-                  <img src="/bg.png" alt="bgimg" />
+              href="https://twitter.com/mannupaaji">
+              <div className="relative mb-10 flex h-[30vh] w-[80vw] items-center justify-center overflow-hidden sm:h-[40vh] sm:w-[570px]">
+                <div className="relative h-full w-full overflow-hidden bg-[#13162D] lg:rounded-3xl">
+                  <Image
+                    src="/bg.png"
+                    alt="bgimg"
+                    width={570}
+                    height={400}
+                    className="h-full w-full object-cover"
+                  />
                 </div>
-                <img
+                <Image
                   src={item.img}
                   alt="cover"
-                  className="z-10 absolute bottom-0"
+                  width={570}
+                  height={400}
+                  className="absolute bottom-0 z-10"
                 />
               </div>
 
-              <h1 className="font-bold lg:text-2xl md:text-xl text-base line-clamp-1">
+              <h1 className="line-clamp-1 text-base font-bold md:text-xl lg:text-2xl">
                 {item.title}
               </h1>
 
               <p
-                className="lg:text-xl lg:font-normal font-light text-sm line-clamp-2"
+                className="line-clamp-2 text-sm font-light lg:text-xl lg:font-normal"
                 style={{
-                  color: "#BEC1DD",
-                  margin: "1vh 0",
-                }}
-              >
+                  color: '#BEC1DD',
+                  margin: '1vh 0',
+                }}>
                 {item.des}
               </p>
 
-              <div className="flex items-center justify-between mt-7 mb-3">
+              <div className="mt-7 mb-3 flex items-center justify-between">
                 <div className="flex items-center">
                   {item.iconLists.map((icon, index) => (
                     <div
                       key={index}
-                      className="border border-white/[.2] rounded-full bg-black lg:w-10 lg:h-10 w-8 h-8 flex justify-center items-center"
+                      className="flex h-8 w-8 items-center justify-center rounded-full border border-white/[.2] bg-black lg:h-10 lg:w-10"
                       style={{
                         transform: `translateX(-${5 * index + 2}px)`,
-                      }}
-                    >
-                      <img src={icon} alt="icon5" className="p-2" />
+                      }}>
+                      <Image
+                        src={icon}
+                        alt="icon5"
+                        width={32}
+                        height={32}
+                        className="p-2"
+                      />
                     </div>
                   ))}
                 </div>
 
-                <div className="flex justify-center items-center">
-                  <p className="flex lg:text-xl md:text-xs text-sm text-purple">
+                <div className="flex items-center justify-center">
+                  <p className="text-purple flex text-sm md:text-xs lg:text-xl">
                     Check Live Site
                   </p>
                   <FaLocationArrow className="ms-3" color="#CBACF9" />
@@ -71,5 +82,5 @@ export const RecentProjects = () => {
         ))}
       </div>
     </div>
-  );
-};
+  )
+}
