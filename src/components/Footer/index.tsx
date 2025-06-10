@@ -12,11 +12,11 @@ export const Footer = () => {
       <div className="flex flex-col items-center">
         <h1 className="text-center text-4xl font-bold md:text-5xl lg:max-w-[45vw]">
           Ready to take <span className="text-purple-300">your</span> digital
-          presence to the next level?
+          presence to new heights?
         </h1>
-        <p className="text-white-200 my-5 text-center md:mt-10">
-          Reach out to me today and let&apos;s discuss how I can help you
-          achieve your goals.
+        <p className="text-white-200 my-5 text-center md:mt-10 lg:text-lg">
+          Let’s connect and explore how I can help you turn ideas into impactful
+          results. Reach out today — your next big step starts here.
         </p>
         <a href="mailto:contact@jsmastery.pro">
           <MagicButton

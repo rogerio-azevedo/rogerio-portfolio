@@ -4,109 +4,11 @@ import React, { useState } from 'react'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { cn } from '@/lib/utils'
+import { techStacks } from '@/data'
 
 interface TechStackProps {
   className?: string
 }
-
-const techStacks = [
-  {
-    name: 'React Native',
-    icon: '/tech/react.svg',
-    description: 'Cross-Platform Mobile Framework',
-    category: 'Mobile',
-    level: 'Advanced',
-    color: 'from-blue-600 to-cyan-600',
-  },
-  {
-    name: 'React',
-    icon: '/tech/react.svg',
-    description: 'Modern UI Library',
-    category: 'Frontend',
-    level: 'Advanced',
-    color: 'from-blue-400 to-cyan-400',
-  },
-  {
-    name: 'Next.js',
-    icon: '/tech/next.svg',
-    description: 'React Framework',
-    category: 'Frontend',
-    level: 'Advanced',
-    color: 'from-gray-300 to-white',
-  },
-  {
-    name: 'TypeScript',
-    icon: '/tech/typescript.svg',
-    description: 'Type-Safe JavaScript',
-    category: 'Language',
-    level: 'Advanced',
-    color: 'from-blue-500 to-blue-600',
-  },
-  {
-    name: 'JavaScript',
-    icon: '/tech/javascript.svg',
-    description: 'Programming Language',
-    category: 'Language',
-    level: 'Advanced',
-    color: 'from-yellow-400 to-yellow-500',
-  },
-  {
-    name: 'Tailwind CSS',
-    icon: '/tech/tailwind.svg',
-    description: 'Utility-First CSS',
-    category: 'Styling',
-    level: 'Advanced',
-    color: 'from-teal-400 to-blue-500',
-  },
-  {
-    name: 'Node.js',
-    icon: '/tech/nodejs.svg',
-    description: 'JavaScript Runtime',
-    category: 'Backend',
-    level: 'Advanced',
-    color: 'from-green-400 to-green-600',
-  },
-  {
-    name: 'NestJS',
-    icon: '/tech/nestjs.svg',
-    description: 'Node.js Framework',
-    category: 'Backend',
-    level: 'Advanced',
-    color: 'from-red-500 to-pink-500',
-  },
-  {
-    name: 'GraphQL',
-    icon: '/tech/graphql.svg',
-    description: 'Query Language',
-    category: 'API',
-    level: 'Advanced',
-    color: 'from-pink-500 to-purple-500',
-  },
-  {
-    name: 'AWS',
-    icon: '/tech/aws.svg',
-    description: 'Cloud Services',
-    category: 'Cloud',
-    level: 'Intermediate',
-    color: 'from-orange-400 to-yellow-500',
-  },
-  {
-    name: 'C#',
-    icon: '/tech/csharp.svg',
-    description: 'Programming Language',
-    category: 'Language',
-    level: 'Intermediate',
-    color: 'from-purple-400 to-purple-500',
-  },
-  {
-    name: 'Python',
-    icon: '/tech/python.svg',
-    description: 'Versatile Programming Language',
-    category: 'Language',
-    level: 'Beginner',
-    color: 'from-blue-400 to-yellow-400',
-  },
-]
 
 const TechCard = ({
   tech,

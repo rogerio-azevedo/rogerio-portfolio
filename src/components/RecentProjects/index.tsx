@@ -10,14 +10,15 @@ export const RecentProjects = () => {
         A small selection of{' '}
         <span className="text-purple-300">recent projects</span>
       </h1>
-      <div className="flex flex-wrap items-center justify-center gap-x-24 gap-y-0 p-2 md:mt-8 md:gap-y-16 md:p-4 lg:mt-12 lg:gap-y-40">
+      <div className="mt-4 flex flex-wrap items-center justify-center gap-x-24 gap-y-2 p-2 md:gap-y-16 md:p-4 lg:mt-12 lg:gap-y-40">
         {projects.map(item => (
           <div
             className="flex h-[32rem] w-[80vw] items-center justify-center sm:h-[41rem] sm:w-[570px] lg:min-h-[32.5rem]"
             key={item.id}>
             <PinContainer
-              title="/ui.aceternity.com"
-              href="https://twitter.com/mannupaaji">
+              title={item.link}
+              href={`https://${item.link}`}
+              className="target-blank">
               <div className="relative mb-10 flex h-[30vh] w-[80vw] items-center justify-center overflow-hidden sm:h-[40vh] sm:w-[570px]">
                 <div className="relative h-full w-full overflow-hidden bg-[#13162D] lg:rounded-3xl">
                   <Image
@@ -33,7 +34,7 @@ export const RecentProjects = () => {
                   alt="cover"
                   width={570}
                   height={400}
-                  className="absolute bottom-0 z-10"
+                  className="absolute bottom-0 left-1/2 z-10 -translate-x-1/2 rotate-3 object-contain"
                 />
               </div>
 
@@ -42,7 +43,7 @@ export const RecentProjects = () => {
               </h1>
 
               <p
-                className="line-clamp-2 text-sm font-light lg:text-xl lg:font-normal"
+                className="line-clamp-3 text-sm font-light lg:text-xl lg:font-normal"
                 style={{
                   color: '#BEC1DD',
                   margin: '1vh 0',
@@ -72,7 +73,7 @@ export const RecentProjects = () => {
 
                 <div className="flex items-center justify-center">
                   <p className="text-purple flex text-sm md:text-xs lg:text-xl">
-                    Check Live Site
+                    Live Site
                   </p>
                   <FaLocationArrow className="ms-3" color="#CBACF9" />
                 </div>

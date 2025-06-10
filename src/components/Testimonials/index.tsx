@@ -19,20 +19,17 @@ export const Testimonials = () => {
         <div className="flex flex-wrap items-center justify-center gap-4 max-lg:mt-10 md:gap-16">
           {companies.map(company => (
             <React.Fragment key={company.id}>
-              <div className="flex max-w-32 gap-2 md:max-w-60">
+              <div className="flex h-16 w-32 items-center justify-center md:h-20 md:w-40">
                 <Image
                   src={company.img}
                   alt={company.name}
-                  width={40}
-                  height={40}
-                  className="w-5 md:w-10"
-                />
-                <Image
-                  src={company.nameImg}
-                  alt={company.name}
-                  width={company.id === 4 || company.id === 5 ? 100 : 150}
-                  height={40}
-                  className="w-20 md:w-24"
+                  width={120}
+                  height={80}
+                  className={`object-contain transition-all duration-300 hover:scale-110 ${
+                    company.type === 'square'
+                      ? 'h-16 w-16 md:h-20 md:w-20'
+                      : 'h-12 w-24 md:h-20 md:w-36'
+                  }`}
                 />
               </div>
             </React.Fragment>
