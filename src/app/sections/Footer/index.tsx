@@ -10,11 +10,11 @@ export const Footer = () => {
   return (
     <footer className="w-full pt-20 pb-10" id="contact">
       <div className="flex flex-col items-center">
-        <h1 className="text-center text-4xl font-bold md:text-5xl lg:max-w-[45vw]">
+        <h1 className="text-center text-4xl font-bold text-white md:text-5xl lg:max-w-[45vw]">
           Ready to take <span className="text-purple-300">your</span> digital
           presence to new heights?
         </h1>
-        <p className="text-white-200 my-5 text-center md:mt-10 lg:text-lg">
+        <p className="text-white-200 my-5 text-center text-white md:mt-10 lg:text-lg">
           Let’s connect and explore how I can help you turn ideas into impactful
           results. Reach out today — your next big step starts here.
         </p>
@@ -27,7 +27,7 @@ export const Footer = () => {
         </a>
       </div>
       <div className="mt-16 flex flex-col-reverse items-center justify-between gap-4 md:flex-row md:gap-0">
-        <p className="text-center text-sm font-light md:text-left md:text-base md:font-normal">
+        <p className="text-center text-sm font-light text-white md:text-left md:text-base md:font-normal">
           Copyright © 2025 Rogerio Azevedo
         </p>
 

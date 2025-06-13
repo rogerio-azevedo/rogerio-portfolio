@@ -6,7 +6,7 @@ import Image from 'next/image'
 export const RecentProjects = () => {
   return (
     <div className="relative z-10 py-10 md:py-20" id="projects">
-      <h1 className="text-center text-4xl font-bold md:text-5xl">
+      <h1 className="text-center text-4xl font-bold text-white md:text-5xl">
         A small selection of{' '}
         <span className="text-purple-300">recent projects</span>
       </h1>
@@ -38,7 +38,7 @@ export const RecentProjects = () => {
                 />
               </div>
 
-              <h1 className="line-clamp-1 text-base font-bold md:text-xl lg:text-2xl">
+              <h1 className="line-clamp-1 text-base font-bold text-white md:text-xl lg:text-2xl">
                 {item.title}
               </h1>
 

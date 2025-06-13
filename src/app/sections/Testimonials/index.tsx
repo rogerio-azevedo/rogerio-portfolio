@@ -8,7 +8,7 @@ import { InfiniteCards } from '@/components/ui/InfiniteCards'
 export const Testimonials = () => {
   return (
     <section id="testimonials" className="relative z-10 py-20">
-      <h1 className="text-center text-4xl font-bold md:text-5xl">
+      <h1 className="text-center text-4xl font-bold text-white md:text-5xl">
         Kind words from
         <span className="text-purple-300"> satisfied clients</span>
       </h1>

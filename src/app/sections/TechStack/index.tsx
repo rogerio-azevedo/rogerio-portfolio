@@ -170,7 +170,7 @@ export const TechStack = ({ className }: TechStackProps) => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           className="mb-4 text-center">
-          <h1 className="text-center text-4xl font-bold md:text-5xl">
+          <h1 className="text-center text-4xl font-bold text-white md:text-5xl">
             Some of my
             <span className="text-purple-300"> Tech Stack</span>
           </h1>

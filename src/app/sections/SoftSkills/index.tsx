@@ -5,7 +5,7 @@ import Image from 'next/image'
 export const SoftSkills = () => {
   return (
     <div className="relative z-10 w-full py-10 md:py-20">
-      <h1 className="text-center text-4xl font-bold md:text-5xl">
+      <h1 className="text-center text-4xl font-bold text-white md:text-5xl">
         Beyond the <span className="text-purple-300">Code</span>
       </h1>
 
@@ -31,10 +31,10 @@ export const SoftSkills = () => {
                 className="h-20 w-20 lg:h-40 lg:w-40"
               />
               <div className="lg:ms-5">
-                <h1 className="text-start text-xl font-bold md:text-3xl">
+                <h1 className="text-start text-xl font-bold text-white md:text-3xl">
                   {card.title}
                 </h1>
-                <p className="text-white-100 mt-3 text-start text-lg font-normal">
+                <p className="text-white-100 mt-3 text-start text-lg font-normal text-white">
                   {card.desc}
                 </p>
               </div>
