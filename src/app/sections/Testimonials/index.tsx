@@ -14,7 +14,7 @@ export const Testimonials = () => {
       </h1>
 
       <div className="flex flex-col items-center max-lg:mt-10">
-        <InfiniteCards items={testimonials} direction="right" speed="slow" />
+        <InfiniteCards items={testimonials} direction="right" speed="normal" />
 
         <div className="flex flex-wrap items-center justify-center gap-4 max-lg:mt-10 md:gap-16">
           {companies.map(company => (
