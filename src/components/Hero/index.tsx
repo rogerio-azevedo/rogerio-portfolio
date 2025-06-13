@@ -52,7 +52,7 @@ export const Hero = () => {
           <p className="text-md mb-4 text-center md:text-lg md:tracking-wider lg:text-2xl">
             Hi! I&apos;m Rogério Azevedo, a FullStack Developer based in Brazil.
           </p>
-          <button onClick={() => scrollToSection('contact')}>
+          <button type="button" onClick={() => scrollToSection('contact')}>
             <MagicButton
               title="Show my work"
               icon={<FaLocationArrow />}

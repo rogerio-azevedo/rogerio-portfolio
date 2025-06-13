@@ -216,21 +216,21 @@ export const projects = [
     ],
     link: 'meuiot.com.br',
   },
-  {
-    id: 3,
-    title: 'Síndico Pro - Condo Management Platform',
-    des: 'A real-world SaaS platform built to simplify and professionalize condo management. Includes: realizations, tasks management, document organization, occurrences management, and more.',
-    img: '/projects/sindicopro.png',
-    iconLists: [
-      '/tech/react.svg',
-      '/tech/next.svg',
-      '/tech/tailwind.svg',
-      '/tech/typescript.svg',
-      '/tech/nestjs.svg',
-      '/tech/graphql.svg',
-    ],
-    link: 'sindicopro.adm.br',
-  },
+  // {
+  //   id: 3,
+  //   title: 'Síndico Pro - Condo Management Platform',
+  //   des: 'A real-world SaaS platform built to simplify and professionalize condo management. Includes: realizations, tasks management, document organization, occurrences management, and more.',
+  //   img: '/projects/sindicopro.png',
+  //   iconLists: [
+  //     '/tech/react.svg',
+  //     '/tech/next.svg',
+  //     '/tech/tailwind.svg',
+  //     '/tech/typescript.svg',
+  //     '/tech/nestjs.svg',
+  //     '/tech/graphql.svg',
+  //   ],
+  //   link: 'sindicopro.adm.br',
+  // },
   {
     id: 4,
     title: 'Escovato Beauty Salon Website',
@@ -248,33 +248,38 @@ export const projects = [
 export const testimonials = [
   {
     quote:
-      "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
-    name: 'Michael Johnson',
-    title: 'Director of AlphaStream Technologies',
+      'Rogerio played a key role in transforming PorterGroup into a truly data-driven company. He led the development of Analytics, our internal BI platform, which has become a strategic tool across the entire organization. The system provides real-time visibility into our operations and performance, supporting both operational and technical decision-making at all levels. What impressed us most was Rogerio’s ability to combine deep technical expertise with a clear understanding of our business challenges. The platform is intuitive, fast, and scalable — and it continues to evolve based on the needs of our teams. Today, Analytics is not just a dashboard — it’s an essential part of how we operate. I highly recommend Rogerio for any organization seeking to turn data into action and strategy.',
+    name: 'Fabio Beal',
+    title: 'CEO of Porter Group',
+    img: '/testimonials/fabio.jpg',
   },
   {
     quote:
-      "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
-    name: 'Michael Johnson',
-    title: 'Director of AlphaStream Technologies',
+      'Implementing Meu IoT has brought a new level of organization and control to our daily operations at Jardim Home Senior. One of the most impactful changes was in the management of our medicine cabinets — which now remain securely closed and accessible only to authorized staff. It also simplified and secured visitor access, giving family members controlled entry while keeping our residents safe. The platform is reliable, easy to use, and has become an essential part of how we run our facility. I’m very satisfied with the results.',
+    name: 'Davi Beber',
+    title: 'Founder Jardim Home Senior',
+    img: '/testimonials/davi.jpeg',
   },
+  // {
+  //   quote:
+  //     'Since implementing Meu IoT at Dona Kleo Cosméticos, we’ve experienced a significant increase in security and peace of mind. The alarm system has become a key part of our daily routine, and the fact that our doors remain closed at all times — only opened by authorized staff via the app or computer — makes all the difference. Our team quickly adapted to the system, and it has brought both efficiency and safety to our store operations. I highly recommend it to any business looking to modernize and protect their access control.',
+  //   name: 'Polyana Borges',
+  //   title: 'Co-Founder of Dona Kleo',
+  //   img: '/testimonials/polyana.jpeg',
+  // },
+  // {
+  //   quote:
+  //     "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
+  //   name: 'Zara Smith',
+  //   title: 'CEO of AlphaStream Technologies',
+  //   img: '/testimonials/profile.svg',
+  // },
   {
     quote:
-      "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
-    name: 'Michael Johnson',
-    title: 'Director of AlphaStream Technologies',
-  },
-  {
-    quote:
-      "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
-    name: 'Michael Johnson',
-    title: 'Director of AlphaStream Technologies',
-  },
-  {
-    quote:
-      "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
-    name: 'Michael Johnson',
-    title: 'Director of AlphaStream Technologies',
+      'We hired Rogerio to design and develop the official website for Escovato, and the results exceeded our expectations. From the start, he demonstrated a clear understanding of our brand and delivered a site that is elegant, responsive, and aligned with the high-end experience we offer in our salon. The entire process was smooth and professional. Rogerio was proactive, creative, and highly committed to quality — always delivering on time and with great attention to detail. We constantly receive compliments on how beautiful and easy to navigate the website is. I would gladly recommend him to anyone looking for a top-notch web developer.',
+    name: 'Avelino Barbosa',
+    title: 'Co-Founder of Escovato',
+    img: '/testimonials/avelino.png',
   },
 ]
 
@@ -295,14 +300,14 @@ export const companies = [
     type: 'square',
     link: 'meuiot.com.br',
   },
-  {
-    id: 3,
-    name: 'Sindico Pro',
-    img: '/companies/sindicopro.svg',
-    nameImg: 'Sindico Pro',
-    type: 'horizontal',
-    link: 'sindicopro.adm.br',
-  },
+  // {
+  //   id: 3,
+  //   name: 'Sindico Pro',
+  //   img: '/companies/sindicopro.svg',
+  //   nameImg: 'Sindico Pro',
+  //   type: 'horizontal',
+  //   link: 'sindicopro.adm.br',
+  // },
   {
     id: 4,
     name: 'Escovato',
@@ -319,28 +324,28 @@ export const workExperience = [
     title: 'Frontend Engineer Intern',
     desc: 'Assisted in the development of a web-based platform using React.js, enhancing interactivity.',
     className: 'md:col-span-2',
-    thumbnail: '/exp1.svg',
+    thumbnail: '/experiences/exp1.svg',
   },
   {
     id: 2,
     title: 'Mobile App Dev - JSM Tech',
     desc: 'Designed and developed mobile app for both iOS & Android platforms using React Native.',
     className: 'md:col-span-2',
-    thumbnail: '/exp2.svg',
+    thumbnail: '/experiences/exp2.svg',
   },
   {
     id: 3,
     title: 'Freelance App Dev Project',
     desc: 'Led the dev of a mobile app for a client, from initial concept to deployment on app stores.',
     className: 'md:col-span-2',
-    thumbnail: '/exp3.svg',
+    thumbnail: '/experiences/exp3.svg',
   },
   {
     id: 4,
-    title: 'Lead Frontend Developer',
+    title: 'Lead Mobile Developer Team',
     desc: 'Developed and maintained user-facing features using modern frontend technologies.',
     className: 'md:col-span-2',
-    thumbnail: '/exp4.svg',
+    thumbnail: '/experiences/exp4.svg',
   },
 ]
 

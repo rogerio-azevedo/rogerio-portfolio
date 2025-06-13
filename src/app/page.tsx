@@ -10,6 +10,7 @@ import {
   TechStack,
 } from '@/components'
 
+// import { ExecutiveDashboard } from '@/components/SoftSkills/ExecutiveDashboard'
 import { navItems } from '@/data'
 
 export default function Home() {
@@ -20,6 +21,7 @@ export default function Home() {
         <Hero />
         {/* <Grid /> */}
         <TechStack />
+        {/* <ExecutiveDashboard /> */}
         <RecentProjects />
         <Testimonials />
         <Experience />

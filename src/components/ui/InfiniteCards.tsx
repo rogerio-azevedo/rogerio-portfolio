@@ -11,6 +11,7 @@ type InfiniteCardsProps = {
     quote: string
     name: string
     title: string
+    img: string
   }[]
   direction?: 'left' | 'right'
   speed?: 'fast' | 'normal' | 'slow'
@@ -38,12 +39,12 @@ export const InfiniteCards = ({
     if (containerRef.current && scrollerRef.current) {
       const scrollerContent = Array.from(scrollerRef.current.children)
 
-      scrollerContent.forEach(item => {
+      for (const item of scrollerContent) {
         const duplicatedItem = item.cloneNode(true)
         if (scrollerRef.current) {
           scrollerRef.current.appendChild(duplicatedItem)
         }
-      })
+      }
 
       getDirection()
       getSpeed()
@@ -129,21 +130,23 @@ export const InfiniteCards = ({
               backgroundColor:
                 'linear-gradient(90deg, rgba(4,7,29,1) 0%, rgba(12,14,35,1) 100%)',
             }}
-            key={idx}>
+            key={item.name}>
             <blockquote>
               <div
                 aria-hidden="true"
-                className="user-select-none pointer-events-none absolute -top-0.5 -left-0.5 -z-1 h-[calc(100%_+_4px)] w-[calc(100%_+_4px)]"></div>
+                className="user-select-none pointer-events-none absolute -top-0.5 -left-0.5 -z-1 h-[calc(100%_+_4px)] w-[calc(100%_+_4px)]"
+              />
               <span className="relative z-20 text-sm leading-[1.6] font-normal text-white md:text-lg">
                 {item.quote}
               </span>
               <div className="relative z-20 mt-6 flex flex-row items-center">
-                <div className="me-3">
+                <div className="me-3 rounded-full border border-white">
                   <Image
-                    src="/profile.svg"
+                    src={item.img}
                     alt="profile"
-                    width={24}
-                    height={24}
+                    width={60}
+                    height={60}
+                    className="rounded-full"
                   />
                 </div>
                 <div className="flex flex-col gap-1">
