@@ -3,12 +3,8 @@
 import React, { useState } from 'react'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
-import { cn } from '@/lib/utils'
 import { techStacks } from '@/data'
-
-interface TechStackProps {
-  className?: string
-}
+import { Section } from '@/components/Section'
 
 const TechCard = ({
   tech,
@@ -52,7 +48,6 @@ const TechCard = ({
       onTouchEnd={handleInteractionEnd}
       className="group relative">
       <div className="relative h-full overflow-hidden rounded-2xl border border-gray-700/50 bg-gradient-to-br from-gray-900/50 to-gray-800/50 p-6 backdrop-blur-sm">
-        {/* Glow effect */}
         <motion.div
           className={`absolute inset-0 bg-gradient-to-r ${tech.color} rounded-2xl transition-opacity duration-300`}
           animate={
@@ -61,7 +56,6 @@ const TechCard = ({
           transition={{ duration: 0.3 }}
         />
 
-        {/* Floating particles effect */}
         {isHovered && (
           <motion.div
             initial={{ opacity: 0 }}
@@ -92,7 +86,6 @@ const TechCard = ({
         )}
 
         <div className="relative z-10 flex h-full flex-col items-center justify-between space-y-4 text-center">
-          {/* Tech Icon */}
           <motion.div
             className="relative"
             animate={isHovered ? { rotate: 360 } : { rotate: 0 }}
@@ -108,25 +101,18 @@ const TechCard = ({
             </div>
           </motion.div>
 
-          {/* Content Section */}
           <div className="flex flex-col items-center space-y-3 text-center">
-            {/* Tech Name */}
             <h3 className="text-xl font-bold text-white">{tech.name}</h3>
-
-            {/* Description */}
             <p className="text-sm text-gray-300">{tech.description}</p>
           </div>
 
-          {/* Skill Level Badge - Now at bottom */}
           <div className="w-full">
             <div className="flex items-center justify-between gap-2">
-              {/* Category Badge - Left */}
               <span
                 className={`inline-block bg-gradient-to-r px-3 py-1 text-xs font-medium ${tech.color} rounded-full text-black`}>
                 {tech.category}
               </span>
 
-              {/* Experience Level Badge - Right */}
               <motion.span
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -159,12 +145,10 @@ const TechCard = ({
   )
 }
 
-export const TechStack = ({ className }: TechStackProps) => {
+export const TechStack = () => {
   return (
-    <section
-      className={cn('relative z-10 px-4 py-5 md:px-0 md:py-40', className)}>
-      <div className="mx-auto max-w-7xl">
-        {/* Header */}
+    <Section className="relative z-10">
+      <div className="w-full">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -176,14 +160,12 @@ export const TechStack = ({ className }: TechStackProps) => {
           </h1>
         </motion.div>
 
-        {/* Tech Grid */}
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {techStacks.map((tech, index) => (
             <TechCard key={tech.name} tech={tech} index={index} />
           ))}
         </div>
 
-        {/* Floating Background Elements */}
         <div className="pointer-events-none absolute inset-0 overflow-hidden">
           <motion.div
             animate={{
@@ -211,6 +193,6 @@ export const TechStack = ({ className }: TechStackProps) => {
           />
         </div>
       </div>
-    </section>
+    </Section>
   )
 }

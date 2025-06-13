@@ -1,3 +1,4 @@
+export { AboutMe } from './AboutMe'
 export { Footer } from './Footer'
 export { Hero } from './Hero'
 export { SoftSkills } from './SoftSkills'

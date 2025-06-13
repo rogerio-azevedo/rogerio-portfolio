@@ -1,12 +1,13 @@
 'use client'
 
 import React from 'react'
-import { Spotlight } from '../../../components/ui/Spotlight'
+import { Spotlight } from '@/components/ui/Spotlight'
 import { GridBackground } from '../../../components/ui/GridBackground'
 import { TextGenerateEffect } from '../../../components/ui/TextGenerateEffect'
 import { MagicButton } from '../../../components/ui/MagicButton'
 import { FaLocationArrow } from 'react-icons/fa'
-import { GridGlobe } from '../../../components/ui/GridGlobe'
+import { GridGlobe } from '../../../components/GridGlobe'
+import { Section } from '@/components/Section'
 
 export const Hero = () => {
   const scrollToSection = (sectionId: string) => {
@@ -21,7 +22,7 @@ export const Hero = () => {
   }
 
   return (
-    <div className="pt-36 pb-20 lg:pb-40">
+    <Section className="mt-40 mb-10">
       <div>
         <Spotlight
           className="-top-40 -left-10 h-screen md:-top-20 md:-left-32"
@@ -54,7 +55,7 @@ export const Hero = () => {
           </p>
           <button
             type="button"
-            onClick={() => scrollToSection('contact')}
+            onClick={() => scrollToSection('projects')}
             className="pointer-events-auto">
             <MagicButton
               title="Show my work"
@@ -64,6 +65,6 @@ export const Hero = () => {
           </button>
         </div>
       </div>
-    </div>
+    </Section>
   )
 }

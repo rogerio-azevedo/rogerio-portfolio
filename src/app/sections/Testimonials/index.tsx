@@ -4,10 +4,21 @@ import React from 'react'
 import Image from 'next/image'
 import { companies, testimonials } from '@/data'
 import { InfiniteCards } from '@/components/ui/InfiniteCards'
+import { Section } from '@/components/Section'
+
+const handleImageSize = (type: string) => {
+  if (type === 'square') {
+    return 'h-16 w-16 md:h-24 md:w-24'
+  }
+  if (type === 'horizontal') {
+    return 'h-12 w-24 md:h-20 md:w-36'
+  }
+  return 'h-20 w-20 md:h-30 md:w-30'
+}
 
 export const Testimonials = () => {
   return (
-    <section id="testimonials" className="relative z-10 py-20">
+    <Section id="testimonials" className="relative z-10">
       <h1 className="text-center text-4xl font-bold text-white md:text-5xl">
         Kind words from
         <span className="text-purple-300"> satisfied clients</span>
@@ -25,17 +36,15 @@ export const Testimonials = () => {
                   alt={company.name}
                   width={120}
                   height={80}
-                  className={`object-contain transition-all duration-300 hover:scale-110 ${
-                    company.type === 'square'
-                      ? 'h-16 w-16 md:h-20 md:w-20'
-                      : 'h-12 w-24 md:h-20 md:w-36'
-                  }`}
+                  className={`object-contain transition-all duration-300 hover:scale-110 ${handleImageSize(
+                    company.type,
+                  )}`}
                 />
               </div>
             </React.Fragment>
           ))}
         </div>
       </div>
-    </section>
+    </Section>
   )
 }

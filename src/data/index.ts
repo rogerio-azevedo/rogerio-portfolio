@@ -313,7 +313,7 @@ export const companies = [
     name: 'Escovato',
     img: '/companies/escovato.svg',
     nameImg: 'Escovato',
-    type: 'horizontal',
+    type: 'vertical',
     link: 'escovato.com.br',
   },
 ]
@@ -323,28 +323,24 @@ export const workExperience = [
     id: 1,
     title: 'Strategic Leadership',
     desc: 'Strategic vision and leadership of high-performance teams.',
-    className: 'md:col-span-2',
     thumbnail: '/soft-skills/leadership.svg',
   },
   {
     id: 2,
     title: 'Stakeholder Communication',
     desc: 'Effective communication with C-level executives and technical stakeholders.',
-    className: 'md:col-span-2',
     thumbnail: '/soft-skills/stakeholder.svg',
   },
   {
     id: 3,
     title: 'Innovation Management',
     desc: 'Implementation of innovative solutions and continuous improvement processes.',
-    className: 'md:col-span-2',
     thumbnail: '/soft-skills/innovation.svg',
   },
   {
     id: 4,
     title: 'Technical Mentorship',
     desc: 'Talent development and technical culture building.',
-    className: 'md:col-span-2',
     thumbnail: '/soft-skills/mentorship.svg',
   },
 ]
@@ -352,16 +348,19 @@ export const workExperience = [
 export const socialMedia = [
   {
     id: 1,
+    label: 'GitHub',
     img: '/social/git.svg',
     link: 'https://github.com/rogerio-azevedo',
   },
   {
     id: 2,
+    label: 'LinkedIn',
     img: '/social/link.svg',
     link: 'https://www.linkedin.com/in/rogerio-fazevedo',
   },
   {
     id: 3,
+    label: 'WhatsApp',
     img: '/social/wha.svg',
     link: 'https://wa.me/5565999112805',
   },

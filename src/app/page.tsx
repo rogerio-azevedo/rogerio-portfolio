@@ -1,6 +1,7 @@
 import { FloatingNav } from '@/components/ui/FloatingNav'
 
 import {
+  AboutMe,
   Footer,
   Hero,
   RecentProjects,
@@ -19,6 +20,7 @@ export default function Home() {
         <Hero />
         <TechStack />
         <SoftSkills />
+        <AboutMe />
         <RecentProjects />
         <Testimonials />
         <Footer />

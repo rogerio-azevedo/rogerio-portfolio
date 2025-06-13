@@ -2,18 +2,19 @@ import { projects } from '@/data'
 import { PinContainer } from '../../../components/ui/Pin'
 import { FaLocationArrow } from 'react-icons/fa'
 import Image from 'next/image'
+import { Section } from '@/components/Section'
 
 export const RecentProjects = () => {
   return (
-    <div className="relative z-10 py-10 md:py-20" id="projects">
+    <Section className="relative z-10" id="projects">
       <h1 className="text-center text-4xl font-bold text-white md:text-5xl">
         A small selection of{' '}
         <span className="text-purple-300">recent projects</span>
       </h1>
-      <div className="mt-4 flex flex-wrap items-center justify-center gap-x-24 gap-y-2 p-2 md:gap-y-16 md:p-4 lg:mt-12 lg:gap-y-40">
+      <div className="flex flex-wrap items-center justify-center gap-x-24 md:mt-8 md:gap-y-10 lg:mt-20 lg:gap-y-40">
         {projects.map(item => (
           <div
-            className="flex h-[32rem] w-[80vw] items-center justify-center sm:h-[41rem] sm:w-[570px] lg:min-h-[32.5rem]"
+            className="flex h-[32rem] w-[80vw] items-center justify-center md:h-[41rem] md:w-[570px] lg:min-h-[32.5rem]"
             key={item.id}>
             <PinContainer
               title={item.link}
@@ -82,6 +83,6 @@ export const RecentProjects = () => {
           </div>
         ))}
       </div>
-    </div>
+    </Section>
   )
 }
