@@ -198,7 +198,7 @@ export const projects = [
       '/tech/mongo.svg',
       '/tech/postgresql.svg',
     ],
-    link: '/porter.com.br',
+    link: 'porter.com.br',
   },
   {
     id: 2,

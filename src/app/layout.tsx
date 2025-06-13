@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
 import './globals.css'
 import { ThemeProvider } from './providers/ThemeProvider'
+import Script from 'next/script'
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -93,6 +94,27 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <Script
+          src="https://cdn.amplitude.com/libs/analytics-browser-2.11.1-min.js.gz"
+          strategy="beforeInteractive"
+        />
+        <Script
+          src="https://cdn.amplitude.com/libs/plugin-session-replay-browser-1.8.0-min.js.gz"
+          strategy="beforeInteractive"
+        />
+        <Script id="amplitude-init" strategy="beforeInteractive">
+          {`
+            window.amplitude.add(window.sessionReplay.plugin({sampleRate: 1}));
+            window.amplitude.init('${process.env.AMPLITUDE_API_KEY}', {
+              "autocapture": {
+                "elementInteractions": true
+              }
+            });
+          `}
+        </Script>
+      </head>
+
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <ThemeProvider
