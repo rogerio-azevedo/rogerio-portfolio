@@ -42,17 +42,20 @@ export const Hero = () => {
         </div>
       </div>
 
-      <div className="relative z-10 my-10 flex justify-center md:my-20">
+      <div className="pointer-events-none relative z-10 my-10 flex justify-center md:my-20">
         <div className="flex max-w-[89vw] flex-col items-center justify-center md:max-w-2xl lg:max-w-[60vw]">
           <TextGenerateEffect
             words="It’s not about code or dark screens. It’s about experience!"
-            className="text-center text-[36px] md:text-5xl lg:text-6xl"
+            className="text-center text-[36px] select-none md:text-5xl lg:text-6xl"
           />
 
-          <p className="text-md mb-4 text-center md:text-lg md:tracking-wider lg:text-2xl">
+          <p className="text-md mb-4 text-center select-none md:text-lg md:tracking-wider lg:text-2xl">
             Hi! I&apos;m Rogério Azevedo, a FullStack Developer based in Brazil.
           </p>
-          <button type="button" onClick={() => scrollToSection('contact')}>
+          <button
+            type="button"
+            onClick={() => scrollToSection('contact')}
+            className="pointer-events-auto">
             <MagicButton
               title="Show my work"
               icon={<FaLocationArrow />}

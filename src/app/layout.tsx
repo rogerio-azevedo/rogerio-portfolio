@@ -34,22 +34,22 @@ export const metadata: Metadata = {
     'Fullstack',
     'Projects',
   ],
-  authors: [{ name: 'Rogério', url: 'https://yourdomain.com' }],
+  authors: [{ name: 'Rogério', url: 'https://azevedo.dev.br' }],
   creator: 'Rogério',
   publisher: 'Rogério',
-  metadataBase: new URL('https://yourdomain.com'),
+  metadataBase: new URL('https://azevedo.dev.br'),
   alternates: {
-    canonical: 'https://yourdomain.com',
+    canonical: 'https://azevedo.dev.br',
   },
   openGraph: {
     title: 'Rogério - Senior Software Engineer Portfolio',
     description:
       'Portfolio of Rogério, a senior software engineer specialized in scalable systems, modern frontend, robust backend, and cloud solutions.',
-    url: 'https://yourdomain.com',
+    url: 'https://azevedo.dev.br',
     siteName: 'Rogério Portfolio',
     images: [
       {
-        url: '/og-image.png', // coloque uma imagem em /app/og-image.png ou /public/og-image.png
+        url: '/og-image.png',
         width: 1200,
         height: 630,
         alt: 'Rogério - Senior Software Engineer',

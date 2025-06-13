@@ -19,7 +19,7 @@ export const RecentProjects = () => {
               title={item.link}
               href={`https://${item.link}`}
               className="target-blank">
-              <div className="relative mb-10 flex h-[30vh] w-[80vw] items-center justify-center overflow-hidden sm:h-[40vh] sm:w-[570px]">
+              <div className="relative mb-8 flex h-[30vh] w-[80vw] items-center justify-center overflow-hidden sm:h-[40vh] sm:w-[570px]">
                 <div className="relative h-full w-full overflow-hidden bg-[#13162D] lg:rounded-3xl">
                   <Image
                     src="/bg.png"
@@ -51,7 +51,7 @@ export const RecentProjects = () => {
                 {item.des}
               </p>
 
-              <div className="mt-7 mb-3 flex items-center justify-between">
+              <div className="mt-5 mb-2 flex items-center justify-between">
                 <div className="flex items-center">
                   {item.iconLists.map((icon, index) => (
                     <div
