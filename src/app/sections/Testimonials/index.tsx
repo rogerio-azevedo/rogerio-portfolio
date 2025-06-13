@@ -3,7 +3,7 @@
 import React from 'react'
 import Image from 'next/image'
 import { companies, testimonials } from '@/data'
-import { InfiniteCards } from '../ui/InfiniteCards'
+import { InfiniteCards } from '@/components/ui/InfiniteCards'
 
 export const Testimonials = () => {
   return (

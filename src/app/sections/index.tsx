@@ -1,0 +1,6 @@
+export { Footer } from './Footer'
+export { Hero } from './Hero'
+export { SoftSkills } from './SoftSkills'
+export { RecentProjects } from './RecentProjects'
+export { TechStack } from './TechStack'
+export { Testimonials } from './Testimonials'

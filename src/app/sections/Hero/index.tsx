@@ -1,12 +1,12 @@
 'use client'
 
 import React from 'react'
-import { Spotlight } from '../ui/Spotlight'
-import { GridBackground } from '../ui/GridBackground'
-import { TextGenerateEffect } from '../ui/TextGenerateEffect'
-import { MagicButton } from '../ui/MagicButton'
+import { Spotlight } from '../../../components/ui/Spotlight'
+import { GridBackground } from '../../../components/ui/GridBackground'
+import { TextGenerateEffect } from '../../../components/ui/TextGenerateEffect'
+import { MagicButton } from '../../../components/ui/MagicButton'
 import { FaLocationArrow } from 'react-icons/fa'
-import { GridGlobe } from '../ui/GridGlobe'
+import { GridGlobe } from '../../../components/ui/GridGlobe'
 
 export const Hero = () => {
   const scrollToSection = (sectionId: string) => {

@@ -1,12 +1,12 @@
 import { workExperience } from '@/data'
-import { Button } from '../ui/MovingBorder'
+import { Button } from '../../../components/ui/MovingBorder'
 import Image from 'next/image'
 
-export const Experience = () => {
+export const SoftSkills = () => {
   return (
     <div className="relative z-10 w-full py-10 md:py-20">
       <h1 className="text-center text-4xl font-bold md:text-5xl">
-        My <span className="text-purple-300">work experience</span>
+        Beyond the <span className="text-purple-300">Code</span>
       </h1>
 
       <div className="mt-12 grid w-full grid-cols-1 gap-10 lg:grid-cols-4">
@@ -26,15 +26,15 @@ export const Experience = () => {
               <Image
                 src={card.thumbnail}
                 alt={card.thumbnail}
-                width={128}
-                height={128}
-                className="w-16 md:w-20 lg:w-32"
+                width={160}
+                height={160}
+                className="h-20 w-20 lg:h-40 lg:w-40"
               />
               <div className="lg:ms-5">
-                <h1 className="text-start text-xl font-bold md:text-2xl">
+                <h1 className="text-start text-xl font-bold md:text-3xl">
                   {card.title}
                 </h1>
-                <p className="text-white-100 mt-3 text-start font-semibold">
+                <p className="text-white-100 mt-3 text-start text-lg font-normal">
                   {card.desc}
                 </p>
               </div>

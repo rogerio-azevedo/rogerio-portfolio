@@ -1,5 +1,5 @@
 import { projects } from '@/data'
-import { PinContainer } from '../ui/Pin'
+import { PinContainer } from '../../../components/ui/Pin'
 import { FaLocationArrow } from 'react-icons/fa'
 import Image from 'next/image'
 

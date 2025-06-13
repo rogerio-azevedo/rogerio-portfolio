@@ -321,31 +321,31 @@ export const companies = [
 export const workExperience = [
   {
     id: 1,
-    title: 'Frontend Engineer Intern',
-    desc: 'Assisted in the development of a web-based platform using React.js, enhancing interactivity.',
+    title: 'Strategic Leadership',
+    desc: 'Strategic vision and leadership of high-performance teams.',
     className: 'md:col-span-2',
-    thumbnail: '/experiences/exp1.svg',
+    thumbnail: '/soft-skills/leadership.svg',
   },
   {
     id: 2,
-    title: 'Mobile App Dev - JSM Tech',
-    desc: 'Designed and developed mobile app for both iOS & Android platforms using React Native.',
+    title: 'Stakeholder Communication',
+    desc: 'Effective communication with C-level executives and technical stakeholders.',
     className: 'md:col-span-2',
-    thumbnail: '/experiences/exp2.svg',
+    thumbnail: '/soft-skills/stakeholder.svg',
   },
   {
     id: 3,
-    title: 'Freelance App Dev Project',
-    desc: 'Led the dev of a mobile app for a client, from initial concept to deployment on app stores.',
+    title: 'Innovation Management',
+    desc: 'Implementation of innovative solutions and continuous improvement processes.',
     className: 'md:col-span-2',
-    thumbnail: '/experiences/exp3.svg',
+    thumbnail: '/soft-skills/innovation.svg',
   },
   {
     id: 4,
-    title: 'Lead Mobile Developer Team',
-    desc: 'Developed and maintained user-facing features using modern frontend technologies.',
+    title: 'Technical Mentorship',
+    desc: 'Talent development and technical culture building.',
     className: 'md:col-span-2',
-    thumbnail: '/experiences/exp4.svg',
+    thumbnail: '/soft-skills/mentorship.svg',
   },
 ]
 

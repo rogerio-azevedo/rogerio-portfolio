@@ -1,16 +1,14 @@
 import { FloatingNav } from '@/components/ui/FloatingNav'
 
 import {
-  Experience,
   Footer,
-  // Grid,
   Hero,
   RecentProjects,
+  SoftSkills,
   Testimonials,
   TechStack,
-} from '@/components'
+} from '@/app/sections'
 
-// import { ExecutiveDashboard } from '@/components/SoftSkills/ExecutiveDashboard'
 import { navItems } from '@/data'
 
 export default function Home() {
@@ -19,12 +17,10 @@ export default function Home() {
       <div className="w-full max-w-7xl">
         <FloatingNav navItems={navItems} />
         <Hero />
-        {/* <Grid /> */}
         <TechStack />
-        {/* <ExecutiveDashboard /> */}
+        <SoftSkills />
         <RecentProjects />
         <Testimonials />
-        <Experience />
         <Footer />
       </div>
     </main>
