@@ -122,7 +122,7 @@ export const InfiniteCards = ({
           start && 'animate-scroll',
           isPaused && '[animation-play-state:paused]',
         )}>
-        {items.map((item, idx) => (
+        {items.map(item => (
           <li
             className="relative w-[90vw] max-w-full flex-shrink-0 rounded-2xl border border-b-0 border-slate-800 p-5 md:w-[60vw] md:p-16"
             style={{
