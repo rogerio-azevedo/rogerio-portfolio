@@ -113,6 +113,7 @@ export default function RootLayout({
             });
           `}
         </Script>
+        <meta property="fb:app_id" content={process.env.FB_APP_ID} />
       </head>
 
       <body
