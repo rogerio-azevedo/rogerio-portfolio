@@ -21,7 +21,12 @@ export function CardWrapper() {
 
     checkMobile()
     window.addEventListener('resize', checkMobile)
-    return () => window.removeEventListener('resize', checkMobile)
+    window.addEventListener('resize', checkTablet)
+
+    return () => {
+      window.removeEventListener('resize', checkMobile)
+      window.removeEventListener('resize', checkTablet)
+    }
   }, [])
 
   return (

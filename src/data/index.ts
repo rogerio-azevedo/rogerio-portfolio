@@ -358,12 +358,12 @@ export const socialMedia = [
     img: '/social/link.svg',
     link: 'https://www.linkedin.com/in/rogerio-fazevedo',
   },
-  {
-    id: 3,
-    label: 'WhatsApp',
-    img: '/social/wha.svg',
-    link: 'https://wa.me/5565999112805',
-  },
+  // {
+  //   id: 3,
+  //   label: 'WhatsApp',
+  //   img: '/social/wha.svg',
+  //   link: 'https://wa.me/5565999112805',
+  // },
   {
     id: 4,
     img: '/social/insta.svg',

@@ -7,7 +7,7 @@ import Image from 'next/image'
 
 export const AboutMe = () => {
   return (
-    <Section className="" id="about">
+    <Section id="about">
       <div className="mx-auto max-w-7xl">
         <h1 className="mb-6 w-full text-center text-4xl font-bold text-white md:text-5xl">
           This is <span className="text-purple-300">Me!</span>
@@ -20,7 +20,7 @@ export const AboutMe = () => {
                 Hello 👋
               </span>
               <h2 className="text-center text-3xl font-bold text-white sm:text-4xl md:text-left">
-                I'm Rogério Azevedo
+                I&apos;m Rogério Azevedo
               </h2>
               <h3 className="mb-2 text-center text-2xl font-semibold text-white/80 sm:text-2xl md:text-left">
                 Senior Software Engineer
