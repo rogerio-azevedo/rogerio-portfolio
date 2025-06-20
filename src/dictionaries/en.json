@@ -194,6 +194,14 @@
       }
     }
   },
+  "footer": {
+    "title": "Ready to take",
+    "title_highlight": "your",
+    "title_end": "digital presence to new heights?",
+    "description": "Let's connect and explore how I can help you turn ideas into impactful results. Reach out today — your next big step starts here.",
+    "cta_button": "Let's get in touch",
+    "copyright": "Copyright © 2025 Rogerio Azevedo"
+  },
   "ai_assistant": {
     "welcome_message": "Hello! 👋 I'm Rogerio Azevedo's virtual assistant. I can help you learn more about his career, projects, technical skills, and professional experiences. What would you like to know?",
     "speech_bubble": {

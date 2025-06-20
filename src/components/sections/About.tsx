@@ -25,7 +25,7 @@ export const About: React.FC<AboutProps> = ({ dict }) => {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
-        className="mb-12 text-center">
+        className="mb-16 text-center">
         <h1 className="text-4xl font-bold text-white md:text-5xl">
           {aboutData.title}{' '}
           <span className="bg-gradient-to-r from-emerald-400 via-green-400 to-teal-400 bg-clip-text text-transparent">
@@ -114,9 +114,7 @@ export const About: React.FC<AboutProps> = ({ dict }) => {
                 className="group cursor-pointer"
                 style={{ cursor: 'pointer' }}
                 onClick={() => window.open(social.link, '_blank')}>
-                <div
-                  className="flex h-12 w-12 cursor-pointer items-center justify-center rounded-lg border border-white/20 bg-white/10 backdrop-blur-sm transition-all duration-300 group-hover:border-emerald-400/50 group-hover:bg-emerald-400/10 group-hover:shadow-lg group-hover:shadow-emerald-400/20"
-                  style={{ cursor: 'pointer' }}>
+                <div className="flex h-12 w-12 cursor-pointer items-center justify-center rounded-lg border border-white/20 bg-white/10 backdrop-blur-sm transition-all duration-300 group-hover:border-emerald-400/50 group-hover:bg-emerald-400/10 group-hover:shadow-lg group-hover:shadow-emerald-400/20">
                   <Image
                     src={social.img}
                     alt={social.label || 'Social media'}

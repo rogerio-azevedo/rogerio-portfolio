@@ -193,6 +193,14 @@
       }
     }
   },
+  "footer": {
+    "title": "¿Listo para llevar",
+    "title_highlight": "tu",
+    "title_end": "presencia digital a nuevas alturas?",
+    "description": "Conectemos y exploremos cómo puedo ayudarte a convertir ideas en resultados impactantes. Contáctame hoy — tu próximo gran paso comienza aquí.",
+    "cta_button": "Hablemos",
+    "copyright": "Copyright © 2025 Rogerio Azevedo"
+  },
   "ai_assistant": {
     "welcome_message": "¡Hola! 👋 Soy el asistente virtual de Rogerio Azevedo. Puedo ayudarte a conocer más sobre su carrera, proyectos, habilidades técnicas y experiencias profesionales. ¿Qué te gustaría saber?",
     "speech_bubble": {

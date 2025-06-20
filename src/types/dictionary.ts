@@ -52,6 +52,15 @@ export interface AIAssistantDictionary {
   header_subtitle: string
 }
 
+export interface FooterDictionary {
+  title: string
+  title_highlight: string
+  title_end: string
+  description: string
+  cta_button: string
+  copyright: string
+}
+
 export interface SkillsDictionary {
   title: string
   frontend: string
@@ -129,5 +138,6 @@ export interface Dictionary {
       }
     }
   }
+  footer: FooterDictionary
   ai_assistant: AIAssistantDictionary
 }

@@ -1,157 +1,292 @@
 'use client'
 
-import React from 'react'
-import { motion } from 'framer-motion'
+import React, { useState, useRef, useEffect } from 'react'
+import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
-import { Section } from '@/components/Section'
-import { TestimonialCard } from '@/components/ui/TestimonialCard'
+import { Section } from '../Section'
+import { Dictionary } from '@/types/dictionary'
 import {
-  testimonialItems,
-  companies,
+  testimonials,
+  ModernTestimonial,
   handleImageSize,
 } from '@/data/testimonials'
-import { Dictionary } from '@/types/dictionary'
+import porterLogo from '@assets/images/companies/porter.png'
+import meuiotLogo from '@assets/images/companies/meuiot.png'
+import escovatoLogo from '@assets/images/companies/escovato.svg'
 
 interface TestimonialsProps {
   dict: Dictionary
 }
 
 export const Testimonials: React.FC<TestimonialsProps> = ({ dict }) => {
+  const [activeTestimonial, setActiveTestimonial] = useState(0)
+  const [isVisible, setIsVisible] = useState(false)
+  const containerRef = useRef<HTMLDivElement>(null)
+
+  // Function to get company logo
+  const getCompanyLogo = (company: string) => {
+    switch (company.toLowerCase()) {
+      case 'porter':
+        return porterLogo
+      case 'meuiot':
+        return meuiotLogo
+      case 'escovato':
+        return escovatoLogo
+      default:
+        return null
+    }
+  }
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ['start end', 'end start'],
+  })
+
+  const scale = useTransform(scrollYProgress, [0, 0.5, 1], [0.8, 1, 0.8])
+
+  // Intersection Observer to detect when section is visible
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsVisible(entry.isIntersecting && entry.intersectionRatio > 0.3)
+      },
+      {
+        threshold: [0.3, 0.7], // Trigger when 30% visible
+        rootMargin: '0px 0px -10% 0px', // Add some margin
+      },
+    )
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current)
+    }
+
+    return () => {
+      if (containerRef.current) {
+        observer.unobserve(containerRef.current)
+      }
+    }
+  }, [])
+
+  // Auto-play testimonials when section is visible
+  useEffect(() => {
+    if (isVisible) {
+      const interval = setInterval(() => {
+        setActiveTestimonial(prev => (prev + 1) % testimonials.length)
+      }, 4000)
+      return () => clearInterval(interval)
+    }
+  }, [isVisible])
+
   return (
-    <section
+    <Section
       id="testimonials"
-      className="relative min-h-screen w-full bg-gradient-to-br from-black via-gray-900 to-emerald-950/20 py-20">
-      {/* Background decorative elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-40 -right-40 h-80 w-80 rounded-full bg-emerald-500/10 blur-3xl" />
-        <div className="absolute -bottom-40 -left-40 h-80 w-80 rounded-full bg-green-500/10 blur-3xl" />
-        <div className="absolute top-1/2 left-1/2 h-60 w-60 -translate-x-1/2 -translate-y-1/2 rounded-full bg-teal-500/5 blur-3xl" />
-      </div>
+      ref={containerRef}
+      className="relative z-10 w-full bg-gradient-to-br from-slate-900 via-[#00110f] to-black">
+      {/* Header */}
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+        className="mb-16 text-center">
+        <h1 className="text-4xl font-bold text-white md:text-5xl">
+          {dict.testimonials.title}{' '}
+          <span className="bg-gradient-to-r from-emerald-400 via-green-400 to-teal-400 bg-clip-text text-transparent">
+            {dict.testimonials.subtitle}
+          </span>
+        </h1>
+      </motion.div>
 
-      <Section className="relative z-10">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="mb-16 text-center">
-          <h2 className="text-4xl font-bold text-white md:text-5xl lg:text-6xl">
-            <span className="bg-gradient-to-r from-emerald-400 to-green-400 bg-clip-text text-transparent">
-              {dict.testimonials.title}
-            </span>{' '}
-            <span className="text-white">{dict.testimonials.subtitle}</span>
-          </h2>
-
-          <motion.div
-            initial={{ scaleX: 0 }}
-            whileInView={{ scaleX: 1 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            viewport={{ once: true }}
-            className="mx-auto mt-4 h-1 w-24 bg-gradient-to-r from-emerald-500 to-green-500"
-          />
-        </motion.div>
-
-        {/* Testimonials Grid */}
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {testimonialItems.map((item, index) => {
-            const testimonial = dict.testimonials.clients[item.key]
-
-            if (!testimonial) return null
-
-            return (
-              <TestimonialCard
-                key={item.key}
-                quote={testimonial.quote}
-                name={testimonial.name}
-                title={testimonial.title}
-                company={testimonial.company}
-                index={index}
-              />
-            )
-          })}
-        </div>
-
-        {/* Companies Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          viewport={{ once: true }}
-          className="mt-20">
-          <h3 className="mb-8 text-center text-xl font-semibold text-gray-400">
-            Trusted by amazing companies
-          </h3>
-
-          <div className="flex flex-wrap items-center justify-center gap-4 max-lg:mt-10 md:gap-16">
-            {companies.map((company, index) => (
-              <React.Fragment key={company.id}>
+      {/* Immersive Testimonial Container */}
+      <div className="relative">
+        {/* Bento Grid Layout */}
+        <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-3">
+          {/* Left Side - Testimonial Cards Stack */}
+          <div className="space-y-4 lg:col-span-1">
+            {testimonials.map(
+              (testimonial: ModernTestimonial, index: number) => (
                 <motion.div
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                  className="flex h-16 w-32 items-center justify-center md:h-20 md:w-40">
-                  <Image
-                    src={company.img}
-                    alt={company.name}
-                    width={120}
-                    height={80}
-                    className={`object-contain transition-all duration-300 hover:scale-110 ${handleImageSize(
-                      company.type,
-                    )}`}
-                  />
+                  key={testimonial.name}
+                  className={`relative cursor-pointer transition-all duration-500 ${
+                    index === activeTestimonial
+                      ? 'z-10 scale-105'
+                      : 'scale-95 opacity-50 hover:opacity-80'
+                  }`}
+                  onClick={() => setActiveTestimonial(index)}
+                  style={{
+                    transform: `translateY(${(index - activeTestimonial) * 20}px) rotateY(${index === activeTestimonial ? 0 : -5}deg)`,
+                    zIndex:
+                      testimonials.length - Math.abs(index - activeTestimonial),
+                  }}>
+                  <div className="rounded-2xl border border-slate-700/50 bg-gradient-to-br from-slate-800/80 to-slate-900/80 p-6 backdrop-blur-sm transition-all duration-300 hover:border-emerald-500/50">
+                    <div className="flex items-center gap-4">
+                      <div className="relative">
+                        <div
+                          className={`h-16 w-16 overflow-hidden rounded-full border-2 transition-all duration-300 ${
+                            index === activeTestimonial
+                              ? 'border-emerald-400 shadow-lg shadow-emerald-400/50'
+                              : 'border-slate-600/50 hover:border-slate-500/50'
+                          }`}>
+                          <Image
+                            src={testimonial.photo}
+                            alt={testimonial.name}
+                            width={64}
+                            height={64}
+                            className="h-full w-full object-cover"
+                          />
+                        </div>
+                      </div>
+                      <div>
+                        <h4 className="font-semibold text-white">
+                          {testimonial.name}
+                        </h4>
+                        <p className="text-sm text-slate-400">
+                          {testimonial.role}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
                 </motion.div>
-              </React.Fragment>
-            ))}
+              ),
+            )}
           </div>
-        </motion.div>
 
-        {/* Floating particles effect */}
-        <div className="absolute inset-0 overflow-hidden">
-          {[
-            { left: 22.62, top: 12.78, duration: 3.2, delay: 0.5 },
-            { left: 8.25, top: 23.64, duration: 4.1, delay: 1.2 },
-            { left: 45.07, top: 8.97, duration: 3.8, delay: 0.8 },
-            { left: 2.97, top: 47.35, duration: 4.5, delay: 1.8 },
-            { left: 78.43, top: 65.22, duration: 3.3, delay: 0.3 },
-            { left: 91.15, top: 15.84, duration: 4.2, delay: 1.5 },
-            { left: 34.68, top: 78.91, duration: 3.9, delay: 0.9 },
-            { left: 67.22, top: 35.47, duration: 3.6, delay: 1.1 },
-            { left: 15.89, top: 82.33, duration: 4.3, delay: 0.6 },
-            { left: 86.54, top: 28.76, duration: 3.7, delay: 1.7 },
-            { left: 53.91, top: 92.15, duration: 4.0, delay: 0.4 },
-            { left: 29.47, top: 5.68, duration: 3.4, delay: 1.3 },
-            { left: 72.83, top: 58.29, duration: 4.4, delay: 0.7 },
-            { left: 11.26, top: 41.92, duration: 3.5, delay: 1.6 },
-            { left: 88.75, top: 74.35, duration: 4.1, delay: 1.0 },
-            { left: 42.18, top: 19.67, duration: 3.8, delay: 1.4 },
-            { left: 64.39, top: 87.53, duration: 3.2, delay: 0.2 },
-            { left: 18.92, top: 63.28, duration: 4.6, delay: 1.9 },
-            { left: 76.54, top: 31.85, duration: 3.9, delay: 0.1 },
-            { left: 38.67, top: 96.42, duration: 4.3, delay: 1.4 },
-          ].map((particle, i) => (
+          {/* Center - Main Testimonial Display */}
+          <div className="relative lg:col-span-2">
             <motion.div
-              key={i}
-              className="absolute h-1 w-1 rounded-full bg-emerald-400/30"
-              style={{
-                left: `${particle.left}%`,
-                top: `${particle.top}%`,
-              }}
-              animate={{
-                y: [-20, 20],
-                opacity: [0.3, 0.8, 0.3],
-              }}
-              transition={{
-                duration: particle.duration,
-                repeat: Infinity,
-                repeatType: 'reverse',
-                delay: particle.delay,
-              }}
-            />
-          ))}
+              style={{ scale }}
+              className="relative flex h-[500px] flex-col justify-between overflow-hidden rounded-3xl border border-slate-700/30 bg-gradient-to-br from-slate-800/60 to-slate-900/60 p-12 backdrop-blur-xl">
+              {/* Metal Shader Background */}
+              <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-transparent via-emerald-500/5 to-cyan-500/10" />
+
+              {/* Progressive Blur Effect */}
+              <div className="absolute inset-0 rounded-3xl opacity-30">
+                {Array.from({ length: 20 }).map((_, i) => (
+                  <motion.div
+                    key={i}
+                    className="absolute h-full w-full"
+                    style={{
+                      background: `radial-gradient(circle at ${Math.random() * 100}% ${Math.random() * 100}%, rgba(16, 185, 129, 0.1) 0%, transparent 50%)`,
+                      filter: `blur(${Math.random() * 3}px)`,
+                    }}
+                    animate={{
+                      opacity: [0, 0.5, 0],
+                      scale: [0.5, 1.2, 0.5],
+                    }}
+                    transition={{
+                      duration: 3 + Math.random() * 2,
+                      repeat: Infinity,
+                      delay: Math.random() * 4,
+                    }}
+                  />
+                ))}
+              </div>
+
+              <div className="relative z-10 flex h-full flex-col">
+                {/* Quote Icon with 3D Effect */}
+                <motion.div
+                  className="mb-6"
+                  animate={{ rotateY: [0, 5, 0], rotateX: [0, -2, 0] }}
+                  transition={{ duration: 4, repeat: Infinity }}>
+                  <div className="flex h-16 w-16 rotate-3 transform items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-400 to-cyan-400">
+                    <svg
+                      className="h-8 w-8 text-slate-900"
+                      fill="currentColor"
+                      viewBox="0 0 24 24">
+                      <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h4v10h-10z" />
+                    </svg>
+                  </div>
+                </motion.div>
+
+                {/* Testimonial Content with Text Transitions */}
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={activeTestimonial}
+                    initial={{ opacity: 0, y: 30, filter: 'blur(5px)' }}
+                    animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                    exit={{ opacity: 0, y: -30, filter: 'blur(5px)' }}
+                    transition={{ duration: 0.6, ease: 'easeInOut' }}>
+                    <blockquote className="mb-6 flex-1 text-xl leading-relaxed font-light text-slate-200 md:text-2xl">
+                      &ldquo;{testimonials[activeTestimonial].testimonial}
+                      &rdquo;
+                    </blockquote>
+
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-4">
+                        <div className="h-12 w-12 overflow-hidden rounded-full border-2 border-slate-600/50">
+                          <Image
+                            src={testimonials[activeTestimonial].photo}
+                            alt={testimonials[activeTestimonial].name}
+                            width={48}
+                            height={48}
+                            className="h-full w-full object-cover"
+                          />
+                        </div>
+                        <div>
+                          <cite className="text-lg font-semibold text-white not-italic">
+                            {testimonials[activeTestimonial].name}
+                          </cite>
+                          <p className="font-medium text-emerald-400">
+                            {testimonials[activeTestimonial].role}
+                          </p>
+                        </div>
+                      </div>
+
+                      {/* Interactive Company Logo */}
+                      <motion.div
+                        className={`flex items-center justify-center rounded-lg ${handleImageSize(
+                          testimonials[activeTestimonial].companyType,
+                        )}`}>
+                        {getCompanyLogo(
+                          testimonials[activeTestimonial].company,
+                        ) ? (
+                          <Image
+                            src={
+                              getCompanyLogo(
+                                testimonials[activeTestimonial].company,
+                              )!
+                            }
+                            alt={testimonials[activeTestimonial].company}
+                            width={200}
+                            height={200}
+                            // className="h-full w-full object-contain brightness-75 filter transition-all duration-300 hover:brightness-100"
+                            className={`object-contain transition-all duration-300 hover:scale-110`}
+                          />
+                        ) : (
+                          <span className="text-xs font-semibold tracking-wider text-slate-300 uppercase">
+                            {testimonials[activeTestimonial].company}
+                          </span>
+                        )}
+                      </motion.div>
+                    </div>
+                  </motion.div>
+                </AnimatePresence>
+              </div>
+            </motion.div>
+
+            {/* Navigation Dots with 3D Effect */}
+            <div className="mt-8 flex justify-center gap-3">
+              {testimonials.map((_, index) => (
+                <motion.button
+                  key={index}
+                  className={`h-3 w-3 rounded-full transition-all duration-300 ${
+                    index === activeTestimonial
+                      ? 'scale-125 bg-gradient-to-r from-emerald-400 to-cyan-400'
+                      : 'bg-slate-600 hover:bg-slate-500'
+                  }`}
+                  onClick={() => setActiveTestimonial(index)}
+                  whileTap={{ scale: 0.9 }}
+                  style={{
+                    boxShadow:
+                      index === activeTestimonial
+                        ? '0 0 15px rgba(16, 185, 129, 0.6)'
+                        : 'none',
+                  }}
+                />
+              ))}
+            </div>
+          </div>
         </div>
-      </Section>
-    </section>
+      </div>
+    </Section>
   )
 }

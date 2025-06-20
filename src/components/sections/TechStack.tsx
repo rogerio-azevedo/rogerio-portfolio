@@ -174,7 +174,7 @@ export const TechStack = ({ dict }: TechStackProps) => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="mb-4 text-center">
+          className="mb-16 text-center">
           <h1 className="text-center text-4xl font-bold text-white md:text-5xl">
             {dict.techStack.title.split(' ')[0]}{' '}
             {dict.techStack.title.split(' ')[1]}{' '}

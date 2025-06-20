@@ -7,6 +7,7 @@ import { Testimonials } from '@/components/sections/Testimonials'
 import { Projects } from '@/components/sections/Projects'
 import { FloatingNav } from '@/components/FloatingNav'
 import { getNavItems } from '@/data/navigation'
+import { Footer } from '@/components/sections/Footer'
 
 interface PageProps {
   params: Promise<{ lang: Locale }>
@@ -26,6 +27,7 @@ export default async function HomePage({ params }: PageProps) {
       <About dict={dict} />
       <Projects dict={dict} />
       <Testimonials dict={dict} />
+      <Footer dict={dict} />
     </main>
   )
 }
