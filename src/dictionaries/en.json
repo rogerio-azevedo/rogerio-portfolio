@@ -1,0 +1,48 @@
+{
+  "common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "welcome": "Welcome"
+  },
+  "navigation": {
+    "home": "Home",
+    "about": "About",
+    "projects": "Projects",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Rogério Silva",
+    "subtitle": "Full Stack Developer & Software Engineer",
+    "description": "Expert in building scalable web applications and innovative solutions with over {years} years of experience in modern technologies.",
+    "cta_projects": "View Projects",
+    "cta_contact": "Get in Touch",
+    "scroll_down": "Scroll down"
+  },
+  "about": {
+    "title": "About Me",
+    "description": "I'm a developer passionate about creating solutions that make a difference in people's lives.",
+    "experience_years": "{count} years of experience",
+    "projects_completed": "{count} projects completed",
+    "technologies_mastered": "{count} technologies mastered"
+  },
+  "skills": {
+    "title": "Core Skills",
+    "frontend": "Frontend",
+    "backend": "Backend",
+    "tools": "Tools",
+    "databases": "Databases"
+  },
+  "ai_assistant": {
+    "welcome_message": "Hello! 👋 I'm Rogerio Azevedo's virtual assistant. I can help you learn more about his career, projects, technical skills and professional experiences. What would you like to know?",
+    "speech_bubble": {
+      "line1": "Hi! 👋",
+      "line2": "Want to know",
+      "line3": "more? Talk to me!"
+    },
+    "error_message": "Sorry, an error occurred. Please try again in a few moments.",
+    "input_placeholder": "Type your question...",
+    "header_title": "AI Assistant",
+    "header_subtitle": "About Rogerio Azevedo"
+  }
+}

@@ -1,0 +1,36 @@
+# Dependencies
+node_modules/
+.next/
+.vercel/
+
+# Build outputs
+dist/
+build/
+out/
+
+# Generated files
+.env*
+*.log
+
+# Package files
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Compiled output
+*.tsbuildinfo
+
+# Database
+*.db
+*.sqlite
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Sentry
+.sentryclirc 

@@ -1,0 +1,48 @@
+{
+  "common": {
+    "loading": "Cargando...",
+    "error": "Error",
+    "success": "Éxito",
+    "welcome": "Bienvenido"
+  },
+  "navigation": {
+    "home": "Inicio",
+    "about": "Acerca de",
+    "projects": "Proyectos",
+    "contact": "Contacto"
+  },
+  "hero": {
+    "title": "Rogério Silva",
+    "subtitle": "Desarrollador Full Stack e Ingeniero de Software",
+    "description": "Experto en construir aplicaciones web escalables y soluciones innovadoras con más de {years} años de experiencia en tecnologías modernas.",
+    "cta_projects": "Ver Proyectos",
+    "cta_contact": "Contáctame",
+    "scroll_down": "Desplázate hacia abajo"
+  },
+  "about": {
+    "title": "Sobre Mí",
+    "description": "Soy un desarrollador apasionado por crear soluciones que marquen la diferencia en la vida de las personas.",
+    "experience_years": "{count} años de experiencia",
+    "projects_completed": "{count} proyectos completados",
+    "technologies_mastered": "{count} tecnologías dominadas"
+  },
+  "skills": {
+    "title": "Habilidades Principales",
+    "frontend": "Frontend",
+    "backend": "Backend",
+    "tools": "Herramientas",
+    "databases": "Bases de Datos"
+  },
+  "ai_assistant": {
+    "welcome_message": "¡Hola! 👋 Soy el asistente virtual de Rogerio Azevedo. Puedo ayudarte a conocer más sobre su carrera, proyectos, habilidades técnicas y experiencias profesionales. ¿Qué te gustaría saber?",
+    "speech_bubble": {
+      "line1": "¡Hola! 👋",
+      "line2": "Si quieres saber",
+      "line3": "más, ¡háblame!"
+    },
+    "error_message": "Disculpa, ocurrió un error. Inténtalo de nuevo en unos momentos.",
+    "input_placeholder": "Escribe tu pregunta...",
+    "header_title": "Asistente IA",
+    "header_subtitle": "Sobre Rogerio Azevedo"
+  }
+}
