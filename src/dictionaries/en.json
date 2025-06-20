@@ -8,11 +8,15 @@
   "navigation": {
     "home": "Home",
     "about": "About",
+    "tech_stack": "Tech Stack",
+    "soft_skills": "Soft Skills",
     "projects": "Projects",
+    "testimonials": "Testimonials",
     "contact": "Contact"
   },
   "hero": {
-    "title": "Rogério Silva",
+    "title": "Rogerio Silva",
+    "animated_title": "It's not about code or dark screens. It's about experience!",
     "subtitle": "Full Stack Developer & Software Engineer",
     "description": "Expert in building scalable web applications and innovative solutions with over {years} years of experience in modern technologies.",
     "cta_projects": "View Projects",
@@ -20,11 +24,15 @@
     "scroll_down": "Scroll down"
   },
   "about": {
-    "title": "About Me",
-    "description": "I'm a developer passionate about creating solutions that make a difference in people's lives.",
-    "experience_years": "{count} years of experience",
-    "projects_completed": "{count} projects completed",
-    "technologies_mastered": "{count} technologies mastered"
+    "title": "This is",
+    "subtitle": "Me!",
+    "greeting": "Hello 👋",
+    "name": "I'm Rogério Azevedo",
+    "role": "Senior Software Engineer",
+    "description_1": "Father of the Anas, passionate about technology, family, and music. In my free time, I enjoy playing online games, singing, playing the guitar, and spending time with my wife and daughters.",
+    "description_2": "My core values:",
+    "values_intro": "My core values:",
+    "values": "family, commitment, and loyalty."
   },
   "skills": {
     "title": "Core Skills",
@@ -33,12 +41,165 @@
     "tools": "Tools",
     "databases": "Databases"
   },
+  "techStack": {
+    "title": "Some of my Tech Stack",
+    "subtitle": "Tech Stack",
+    "categories": {
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "mobile": "Mobile",
+      "language": "Language",
+      "styling": "Styling",
+      "database": "Database",
+      "api": "API",
+      "cloud": "Cloud"
+    },
+    "levels": {
+      "expert": "Expert",
+      "advanced": "Advanced",
+      "intermediate": "Intermediate",
+      "beginner": "Beginner"
+    },
+    "technologies": {
+      "react_native": {
+        "name": "React Native",
+        "description": "Cross-Platform Mobile Framework"
+      },
+      "react": {
+        "name": "React",
+        "description": "Modern UI Library"
+      },
+      "nextjs": {
+        "name": "Next.js",
+        "description": "React Framework"
+      },
+      "typescript": {
+        "name": "TypeScript",
+        "description": "Type-Safe JavaScript"
+      },
+      "javascript": {
+        "name": "JavaScript",
+        "description": "Programming Language"
+      },
+      "tailwind": {
+        "name": "Tailwind CSS",
+        "description": "Utility-First CSS"
+      },
+      "nodejs": {
+        "name": "Node.js",
+        "description": "JavaScript Runtime"
+      },
+      "nestjs": {
+        "name": "NestJS",
+        "description": "Node.js Framework"
+      },
+      "postgresql": {
+        "name": "PostgreSQL",
+        "description": "Relational Database"
+      },
+      "mongodb": {
+        "name": "MongoDB",
+        "description": "NoSQL Database"
+      },
+      "graphql": {
+        "name": "GraphQL",
+        "description": "Query Language"
+      },
+      "aws": {
+        "name": "AWS",
+        "description": "Cloud Services"
+      },
+      "csharp": {
+        "name": "C#",
+        "description": "Programming Language"
+      },
+      "python": {
+        "name": "Python",
+        "description": "Versatile Programming Language"
+      }
+    }
+  },
+  "softSkills": {
+    "title": "Beyond the",
+    "subtitle": "Code",
+    "skills": {
+      "strategic_leadership": {
+        "title": "Strategic Leadership",
+        "description": "Strategic vision and high-performance team leadership."
+      },
+      "stakeholder_communication": {
+        "title": "Stakeholder Communication",
+        "description": "Effective communication with C-level executives and technical stakeholders."
+      },
+      "innovation_management": {
+        "title": "Innovation Management",
+        "description": "Implementation of innovative solutions and continuous improvement processes."
+      },
+      "technical_mentorship": {
+        "title": "Technical Mentorship",
+        "description": "Talent development and technical culture building."
+      }
+    }
+  },
+  "testimonials": {
+    "title": "Kind Words from",
+    "subtitle": "Satisfied Clients",
+    "clients": {
+      "fabio_beal": {
+        "quote": "Rogerio played a pivotal role in transforming PorterGroup into a truly data-driven company. He led the development of Analytics, our internal BI platform, which has become a strategic tool across the organization. The system provides real-time visibility into our operations and performance, supporting operational and technical decision-making at all levels. What impressed us most was Rogerio's ability to combine deep technical expertise with a clear understanding of our business challenges. The platform is intuitive, fast, and scalable — and continues to evolve based on our teams' needs. Today, Analytics isn't just a dashboard — it's an essential part of how we operate. I recommend Rogerio for any organization looking to transform data into action and strategy.",
+        "name": "Fabio Beal",
+        "title": "CEO",
+        "company": "Porter Group"
+      },
+      "davi_beber": {
+        "quote": "The implementation of Meu IoT brought a new level of organization and control to our daily operations at Jardim Home Senior. One of the most impactful changes was in managing our medication cabinets — which now remain securely locked and accessible only to authorized staff. It also simplified and secured visitor access, giving families controlled entry while keeping our residents safe. The platform is reliable, easy to use, and has become an essential part of how we manage our facility. I'm very satisfied with the results.",
+        "name": "Davi Beber",
+        "title": "Founder",
+        "company": "Jardim Home Senior"
+      },
+      "avelino_barbosa": {
+        "quote": "We hired Rogerio to design and develop Escovato's official website, and the results exceeded our expectations. From the start, he demonstrated a clear understanding of our brand and delivered an elegant, responsive website aligned with the premium experience we offer at our salon. The entire process was smooth and professional. Rogerio was proactive, creative, and highly committed to quality — always delivering on time and with great attention to detail. We constantly receive compliments on how beautiful and easy to navigate the website is. I would recommend him to anyone looking for a top-tier web developer.",
+        "name": "Avelino Barbosa",
+        "title": "Co-Founder",
+        "company": "Escovato"
+      }
+    },
+    "companies": {
+      "porter": {
+        "name": "Porter"
+      },
+      "meuiot": {
+        "name": "Meu IoT"
+      },
+      "escovato": {
+        "name": "Escovato"
+      }
+    }
+  },
+  "projects": {
+    "title": "A small selection of",
+    "subtitle": "recent projects",
+    "projects": {
+      "porter_analytics": {
+        "title": "Porter Analytics – Operational BI",
+        "description": "A Business Intelligence system developed for Porter to provide clear strategic insights on operational data, supporting decision-making with real-time metrics."
+      },
+      "meu_iot": {
+        "title": "Meu IoT - Smart Access and Emergency System",
+        "description": "Control gates and smart devices remotely while protecting what matters most. Meu IoT also features an integrated panic button and alarm system for real-time emergency response."
+      },
+      "escovato": {
+        "title": "Escovato Beauty Salon Website",
+        "description": "Developed a modern and elegant institutional website for Escovato, a high-end beauty salon, focusing on premium aesthetics, responsiveness, and a seamless user experience."
+      }
+    }
+  },
   "ai_assistant": {
-    "welcome_message": "Hello! 👋 I'm Rogerio Azevedo's virtual assistant. I can help you learn more about his career, projects, technical skills and professional experiences. What would you like to know?",
+    "welcome_message": "Hello! 👋 I'm Rogerio Azevedo's virtual assistant. I can help you learn more about his career, projects, technical skills, and professional experiences. What would you like to know?",
     "speech_bubble": {
       "line1": "Hi! 👋",
-      "line2": "Want to know",
-      "line3": "more? Talk to me!"
+      "line2": "If you want to know",
+      "line3": "more, talk to me!"
     },
     "error_message": "Sorry, an error occurred. Please try again in a few moments.",
     "input_placeholder": "Type your question...",

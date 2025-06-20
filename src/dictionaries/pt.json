@@ -8,11 +8,15 @@
   "navigation": {
     "home": "Início",
     "about": "Sobre",
+    "tech_stack": "Tech Stack",
+    "soft_skills": "Soft Skills",
     "projects": "Projetos",
+    "testimonials": "Depoimentos",
     "contact": "Contato"
   },
   "hero": {
     "title": "Rogério Silva",
+    "animated_title": "Não é sobre código ou telas escuras. É sobre experiência!",
     "subtitle": "Desenvolvedor Full Stack & Engenheiro de Software",
     "description": "Especialista em construir aplicações web escaláveis e soluções inovadoras com mais de {years} anos de experiência em tecnologias modernas.",
     "cta_projects": "Ver Projetos",
@@ -20,11 +24,15 @@
     "scroll_down": "Role para baixo"
   },
   "about": {
-    "title": "Sobre Mim",
-    "description": "Sou um desenvolvedor apaixonado por criar soluções que fazem diferença na vida das pessoas.",
-    "experience_years": "{count} anos de experiência",
-    "projects_completed": "{count} projetos completados",
-    "technologies_mastered": "{count} tecnologias dominadas"
+    "title": "Este sou",
+    "subtitle": "Eu!",
+    "greeting": "Olá 👋",
+    "name": "Eu sou Rogério Azevedo",
+    "role": "Engenheiro de Software Sênior",
+    "description_1": "Pai das Anas, apaixonado por tecnologia, família e música. Nas horas vagas, gosto de jogar online, cantar, tocar violão e passar tempo com minha esposa e filhas.",
+    "description_2": "Meus valores fundamentais:",
+    "values_intro": "Meus valores fundamentais:",
+    "values": "família, compromisso e lealdade."
   },
   "skills": {
     "title": "Principais Habilidades",
@@ -32,6 +40,159 @@
     "backend": "Backend",
     "tools": "Ferramentas",
     "databases": "Bancos de Dados"
+  },
+  "techStack": {
+    "title": "Algumas das minhas habilidades técnicas",
+    "subtitle": "Tech Stack",
+    "categories": {
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "mobile": "Mobile",
+      "language": "Linguagem",
+      "styling": "Estilização",
+      "database": "Banco de Dados",
+      "api": "API",
+      "cloud": "Nuvem"
+    },
+    "levels": {
+      "expert": "Especialista",
+      "advanced": "Avançado",
+      "intermediate": "Intermediário",
+      "beginner": "Iniciante"
+    },
+    "technologies": {
+      "react_native": {
+        "name": "React Native",
+        "description": "Framework Mobile Multiplataforma"
+      },
+      "react": {
+        "name": "React",
+        "description": "Biblioteca UI Moderna"
+      },
+      "nextjs": {
+        "name": "Next.js",
+        "description": "Framework React"
+      },
+      "typescript": {
+        "name": "TypeScript",
+        "description": "JavaScript com Tipagem Segura"
+      },
+      "javascript": {
+        "name": "JavaScript",
+        "description": "Linguagem de Programação"
+      },
+      "tailwind": {
+        "name": "Tailwind CSS",
+        "description": "CSS Utilitário"
+      },
+      "nodejs": {
+        "name": "Node.js",
+        "description": "Runtime JavaScript"
+      },
+      "nestjs": {
+        "name": "NestJS",
+        "description": "Framework Node.js"
+      },
+      "postgresql": {
+        "name": "PostgreSQL",
+        "description": "Banco Relacional"
+      },
+      "mongodb": {
+        "name": "MongoDB",
+        "description": "Banco NoSQL"
+      },
+      "graphql": {
+        "name": "GraphQL",
+        "description": "Linguagem de Consulta"
+      },
+      "aws": {
+        "name": "AWS",
+        "description": "Serviços em Nuvem"
+      },
+      "csharp": {
+        "name": "C#",
+        "description": "Linguagem de Programação"
+      },
+      "python": {
+        "name": "Python",
+        "description": "Linguagem de Programação Versátil"
+      }
+    }
+  },
+  "softSkills": {
+    "title": "Além do",
+    "subtitle": "Código",
+    "skills": {
+      "strategic_leadership": {
+        "title": "Liderança Estratégica",
+        "description": "Visão estratégica e liderança de equipes de alta performance."
+      },
+      "stakeholder_communication": {
+        "title": "Comunicação com Stakeholders",
+        "description": "Comunicação eficaz com executivos C-level e stakeholders técnicos."
+      },
+      "innovation_management": {
+        "title": "Gestão de Inovação",
+        "description": "Implementação de soluções inovadoras e processos de melhoria contínua."
+      },
+      "technical_mentorship": {
+        "title": "Mentoria Técnica",
+        "description": "Desenvolvimento de talentos e construção de cultura técnica."
+      }
+    }
+  },
+  "testimonials": {
+    "title": "Palavras de",
+    "subtitle": "Clientes Satisfeitos",
+    "clients": {
+      "fabio_beal": {
+        "quote": "Rogerio desempenhou um papel fundamental na transformação do PorterGroup em uma empresa verdadeiramente orientada por dados. Ele liderou o desenvolvimento do Analytics, nossa plataforma interna de BI, que se tornou uma ferramenta estratégica em toda a organização. O sistema fornece visibilidade em tempo real de nossas operações e desempenho, apoiando a tomada de decisões operacionais e técnicas em todos os níveis. O que mais nos impressionou foi a capacidade do Rogerio de combinar profunda expertise técnica com uma clara compreensão dos nossos desafios de negócio. A plataforma é intuitiva, rápida e escalável — e continua a evoluir com base nas necessidades das nossas equipes. Hoje, o Analytics não é apenas um dashboard — é uma parte essencial de como operamos. Recomendo Rogerio para qualquer organização que busque transformar dados em ação e estratégia.",
+        "name": "Fabio Beal",
+        "title": "CEO",
+        "company": "Porter Group"
+      },
+      "davi_beber": {
+        "quote": "A implementação do Meu IoT trouxe um novo nível de organização e controle para nossas operações diárias no Jardim Home Senior. Uma das mudanças mais impactantes foi no gerenciamento dos nossos armários de medicamentos — que agora permanecem fechados com segurança e acessíveis apenas à equipe autorizada. Também simplificou e protegeu o acesso de visitantes, dando aos familiares entrada controlada enquanto mantém nossos residentes seguros. A plataforma é confiável, fácil de usar e se tornou uma parte essencial de como administramos nossa instalação. Estou muito satisfeito com os resultados.",
+        "name": "Davi Beber",
+        "title": "Fundador",
+        "company": "Jardim Home Senior"
+      },
+      "avelino_barbosa": {
+        "quote": "Contratamos o Rogerio para projetar e desenvolver o site oficial do Escovato, e os resultados superaram nossas expectativas. Desde o início, ele demonstrou uma clara compreensão da nossa marca e entregou um site elegante, responsivo e alinhado com a experiência premium que oferecemos em nosso salão. Todo o processo foi suave e profissional. Rogerio foi proativo, criativo e altamente comprometido com a qualidade — sempre entregando no prazo e com grande atenção aos detalhes. Constantemente recebemos elogios sobre como o site é bonito e fácil de navegar. Recomendaria ele para qualquer pessoa que procura um desenvolvedor web de primeira linha.",
+        "name": "Avelino Barbosa",
+        "title": "Co-Fundador",
+        "company": "Escovato"
+      }
+    },
+    "companies": {
+      "porter": {
+        "name": "Porter"
+      },
+      "meuiot": {
+        "name": "Meu IoT"
+      },
+      "escovato": {
+        "name": "Escovato"
+      }
+    }
+  },
+  "projects": {
+    "title": "Uma pequena seleção de",
+    "subtitle": "projetos recentes",
+    "projects": {
+      "porter_analytics": {
+        "title": "Porter Analytics – BI Operacional",
+        "description": "Um sistema de Business Intelligence desenvolvido para a Porter para fornecer insights estratégicos claros sobre dados operacionais, apoiando a tomada de decisões com métricas em tempo real."
+      },
+      "meu_iot": {
+        "title": "Meu IoT - Sistema de Acesso Inteligente e Emergência",
+        "description": "Controle portões e dispositivos inteligentes remotamente enquanto protege o que mais importa. O Meu IoT também possui um botão de pânico integrado e sistema de alarme para resposta de emergência em tempo real."
+      },
+      "escovato": {
+        "title": "Site do Salão de Beleza Escovato",
+        "description": "Desenvolvido um site institucional moderno e elegante para o Escovato, um salão de beleza de alto padrão, focando em estética premium, responsividade e uma experiência de usuário perfeita."
+      }
+    }
   },
   "ai_assistant": {
     "welcome_message": "Olá! 👋 Sou o assistente virtual do Rogerio Azevedo. Posso te ajudar a conhecer mais sobre sua carreira, projetos, habilidades técnicas e experiências profissionais. O que você gostaria de saber?",

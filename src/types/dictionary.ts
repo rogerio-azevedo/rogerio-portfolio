@@ -2,6 +2,7 @@
 
 export interface HeroDictionary {
   title: string
+  animated_title: string
   subtitle: string
   description: string
   cta_projects: string
@@ -11,16 +12,23 @@ export interface HeroDictionary {
 
 export interface AboutDictionary {
   title: string
-  description: string
-  experience_years: string
-  projects_completed: string
-  technologies_mastered: string
+  subtitle: string
+  greeting: string
+  name: string
+  role: string
+  description_1: string
+  description_2: string
+  values_intro: string
+  values: string
 }
 
 export interface NavigationDictionary {
   home: string
   about: string
+  tech_stack: string
+  soft_skills: string
   projects: string
+  testimonials: string
   contact: string
 }
 
@@ -59,5 +67,67 @@ export interface Dictionary {
   hero: HeroDictionary
   about: AboutDictionary
   skills: SkillsDictionary
+  techStack: {
+    title: string
+    categories: {
+      frontend: string
+      backend: string
+      mobile: string
+      language: string
+      styling: string
+      database: string
+      api: string
+      cloud: string
+    }
+    levels: {
+      expert: string
+      advanced: string
+      intermediate: string
+      beginner: string
+    }
+    technologies: {
+      [key: string]: {
+        name: string
+        description: string
+      }
+    }
+  }
+  softSkills: {
+    title: string
+    subtitle: string
+    skills: {
+      [key: string]: {
+        title: string
+        description: string
+      }
+    }
+  }
+  testimonials: {
+    title: string
+    subtitle: string
+    clients: {
+      [key: string]: {
+        quote: string
+        name: string
+        title: string
+        company: string
+      }
+    }
+    companies: {
+      [key: string]: {
+        name: string
+      }
+    }
+  }
+  projects: {
+    title: string
+    subtitle: string
+    projects: {
+      [key: string]: {
+        title: string
+        description: string
+      }
+    }
+  }
   ai_assistant: AIAssistantDictionary
 }

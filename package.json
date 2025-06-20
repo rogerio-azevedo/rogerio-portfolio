@@ -10,15 +10,22 @@
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.54.0",
+    "@react-three/drei": "^10.3.0",
+    "@react-three/fiber": "^9.1.2",
     "@supabase/supabase-js": "^2.50.0",
+    "clsx": "^2.1.1",
     "framer-motion": "^12.18.1",
     "lucide-react": "^0.518.0",
     "next": "15.3.4",
     "openai": "^5.5.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-icons": "^5.5.0",
     "server-only": "^0.0.1",
-    "supabase-vector": "link:@/lib/supabase-vector"
+    "supabase-vector": "link:@/lib/supabase-vector",
+    "tailwind-merge": "^3.3.1",
+    "three": "^0.177.0",
+    "three-globe": "^2.42.11"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
@@ -26,6 +33,7 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@types/three": "^0.177.0",
     "eslint": "^9",
     "eslint-config-next": "15.3.4",
     "prettier": "^3.5.3",
