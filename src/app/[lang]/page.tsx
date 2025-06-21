@@ -19,7 +19,7 @@ export default async function HomePage({ params }: PageProps) {
   const navItems = getNavItems(dict)
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
+    <main className="min-h-screen w-full max-w-full overflow-x-hidden bg-gradient-to-br from-slate-50 to-blue-50">
       <FloatingNav navItems={navItems} />
       <Hero dict={dict} />
       <TechStack dict={dict} />

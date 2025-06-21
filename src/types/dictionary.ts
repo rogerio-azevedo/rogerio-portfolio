@@ -8,6 +8,7 @@ export interface HeroDictionary {
   cta_projects: string
   cta_contact: string
   scroll_down: string
+  show_button: string
 }
 
 export interface AboutDictionary {
@@ -57,8 +58,15 @@ export interface FooterDictionary {
   title_highlight: string
   title_end: string
   description: string
-  cta_button: string
+  cta: string
   copyright: string
+  social: {
+    github: string
+    linkedin: string
+    twitter: string
+    instagram: string
+    whatsapp: string
+  }
 }
 
 export interface SkillsDictionary {
@@ -67,6 +75,75 @@ export interface SkillsDictionary {
   backend: string
   tools: string
   databases: string
+}
+
+export interface KnowledgeDictionary {
+  admin: {
+    title: string
+    subtitle: string
+    welcome_message: string
+    placeholder: string
+    send: string
+    sending: string
+    processing: string
+    quick_actions: {
+      hobby_change: string
+      new_project: string
+      professional_update: string
+      new_skill: string
+      personal_change: string
+      new_goal: string
+    }
+    processed_info: {
+      title: string
+      category: string
+      type: string
+      tags: string
+    }
+    status: {
+      connected: string
+      updates_today: string
+    }
+  }
+  list: {
+    title: string
+    subtitle: string
+    stats: {
+      total_entries: string
+      categories: string
+      active_filters: string
+    }
+    filters: {
+      title: string
+      category: string
+      all_categories: string
+      search: string
+      search_placeholder: string
+      suggestions: string
+    }
+    categories: {
+      overview: string
+      personal_info: string
+      hobbies: string
+      career: string
+      projects: string
+      technical_skills: string
+      experiences: string
+      family: string
+      goals: string
+      preferences: string
+      uncategorized: string
+    }
+    messages: {
+      loading: string
+      no_results: string
+      search_active: string
+      search_found: string
+      results_for: string
+      autocorrect: string
+      adjust_filters: string
+    }
+  }
 }
 
 // Tipo principal do dicionário completo
@@ -78,6 +155,7 @@ export interface Dictionary {
   skills: SkillsDictionary
   techStack: {
     title: string
+    subtitle: string
     categories: {
       frontend: string
       backend: string
@@ -140,4 +218,5 @@ export interface Dictionary {
   }
   footer: FooterDictionary
   ai_assistant: AIAssistantDictionary
+  knowledge: KnowledgeDictionary
 }

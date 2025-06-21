@@ -21,7 +21,8 @@
     "description": "Especialista em construir aplicações web escaláveis e soluções inovadoras com mais de {years} anos de experiência em tecnologias modernas.",
     "cta_projects": "Ver Projetos",
     "cta_contact": "Entre em Contato",
-    "scroll_down": "Role para baixo"
+    "scroll_down": "Role para baixo",
+    "show_button": "Ver meus projetos"
   },
   "about": {
     "title": "Este sou",
@@ -198,9 +199,16 @@
     "title": "Pronto para levar",
     "title_highlight": "sua",
     "title_end": "presença digital a novos patamares?",
-    "description": "Vamos nos conectar e explorar como posso ajudá-lo a transformar ideias em resultados impactantes. Entre em contato hoje — seu próximo grande passo começa aqui.",
-    "cta_button": "Vamos conversar",
-    "copyright": "Copyright © 2025 Rogerio Azevedo"
+    "description": "Vamos conversar sobre seu próximo projeto!",
+    "cta": "Vamos conversar",
+    "copyright": "2025 Rogério Azevedo. Todos os direitos reservados.",
+    "social": {
+      "github": "GitHub",
+      "linkedin": "LinkedIn",
+      "twitter": "Twitter",
+      "instagram": "Instagram",
+      "whatsapp": "WhatsApp"
+    }
   },
   "ai_assistant": {
     "welcome_message": "Olá! 👋 Sou o assistente virtual do Rogerio Azevedo. Posso te ajudar a conhecer mais sobre sua carreira, projetos, habilidades técnicas e experiências profissionais. O que você gostaria de saber?",
@@ -213,5 +221,73 @@
     "input_placeholder": "Digite sua pergunta...",
     "header_title": "AI Assistant",
     "header_subtitle": "Sobre Rogerio Azevedo"
+  },
+  "knowledge": {
+    "admin": {
+      "title": "Atualização de Conhecimento",
+      "subtitle": "Interface pessoal para atualizar sua base de conhecimento",
+      "welcome_message": "Olá! Esta é sua interface pessoal para atualizar sua base de conhecimento. Pode me contar qualquer coisa sobre você - mudanças na vida, novos hobbies, projetos, trabalho, etc. Vou processar e organizar automaticamente. 😊",
+      "placeholder": "Me conte algo sobre você...",
+      "send": "Enviar",
+      "sending": "Enviando",
+      "processing": "Processando...",
+      "quick_actions": {
+        "hobby_change": "Mudei de hobby...",
+        "new_project": "Novo projeto que estou trabalhando...",
+        "professional_update": "Atualização profissional...",
+        "new_skill": "Aprendi uma nova habilidade...",
+        "personal_change": "Mudança pessoal...",
+        "new_goal": "Objetivo que defini..."
+      },
+      "processed_info": {
+        "title": "Processado",
+        "category": "Categoria:",
+        "type": "Tipo:",
+        "tags": "Tags:"
+      },
+      "status": {
+        "connected": "Conectado",
+        "updates_today": "atualizações hoje"
+      }
+    },
+    "list": {
+      "title": "Base de Conhecimento",
+      "subtitle": "Visualização do conhecimento armazenado no banco vetorial",
+      "stats": {
+        "total_entries": "Total de Entradas",
+        "categories": "Categorias",
+        "active_filters": "Filtros Ativos"
+      },
+      "filters": {
+        "title": "Filtros",
+        "category": "Categoria",
+        "all_categories": "Todas as categorias",
+        "search": "Busca Semântica (com tolerância a erros)",
+        "search_placeholder": "Ex: hobie, projetos, trabalho... (funciona mesmo com erros!)",
+        "suggestions": "Você quis dizer:"
+      },
+      "categories": {
+        "overview": "Visão Geral das Categorias",
+        "personal_info": "👤 Informações Pessoais",
+        "hobbies": "🎮 Hobbies e Interesses",
+        "career": "💼 Carreira Profissional",
+        "projects": "🚀 Projetos",
+        "technical_skills": "⚡ Habilidades Técnicas",
+        "experiences": "🎯 Experiências",
+        "family": "👨‍👩‍👧‍👦 Família e Relacionamentos",
+        "goals": "🎯 Objetivos e Planos",
+        "preferences": "❤️ Preferências e Gostos",
+        "uncategorized": "❓ Sem Categoria"
+      },
+      "messages": {
+        "loading": "Carregando conhecimento...",
+        "no_results": "Nenhum conhecimento encontrado.",
+        "search_active": "Busca fuzzy ativa: tentando",
+        "search_found": "Busca fuzzy encontrou",
+        "results_for": "resultado(s) para",
+        "autocorrect": "💡 Correção automática aplicada - palavras similares detectadas",
+        "adjust_filters": "Tente ajustar os filtros ou adicionar novo conhecimento."
+      }
+    }
   }
 }

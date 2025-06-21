@@ -13,8 +13,8 @@ export const Section = React.forwardRef<
     <div
       id={id}
       ref={ref}
-      className={cn('relative w-full px-4 py-10 lg:px-0 lg:py-20', className)}>
-      <section className="mx-auto max-w-7xl">{children}</section>
+      className={cn('relative w-full py-10 lg:py-20', className)}>
+      <section className="mx-auto max-w-7xl px-4 xl:px-0">{children}</section>
     </div>
   )
 })

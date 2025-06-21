@@ -1,55 +1,32 @@
-'use client'
-
-import React from 'react'
-import { motion } from 'framer-motion'
-import Image from 'next/image'
-import { FaLocationArrow } from 'react-icons/fa'
-import { Section } from '@/components/Section'
 import { PinContainer } from '@/components/ui/Pin'
+import { FaLocationArrow } from 'react-icons/fa'
+import Image from 'next/image'
+import { Section } from '@/components/Section'
 import { projectItems } from '@/data/projects'
 import { Dictionary } from '@/types/dictionary'
-
 interface ProjectsProps {
   dict: Dictionary
 }
-
 export const Projects: React.FC<ProjectsProps> = ({ dict }) => {
   const projectsData = dict.projects
-
   return (
     <Section
       className="relative z-10 w-full bg-gradient-to-br from-slate-900 via-emerald-900 to-slate-900"
       id="projects">
-      {/* Header */}
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        viewport={{ once: true }}
-        className="mb-16 text-center">
-        <h1 className="text-4xl font-bold text-white md:text-5xl">
-          {projectsData.title}{' '}
-          <span className="bg-gradient-to-r from-emerald-400 via-green-400 to-teal-400 bg-clip-text text-transparent">
-            {projectsData.subtitle}
-          </span>
-        </h1>
-      </motion.div>
-
-      {/* Projects Grid */}
+      <h1 className="text-center text-4xl font-bold text-white md:text-5xl">
+        A small selection of{' '}
+        <span className="text-emerald-400">recent projects</span>
+      </h1>
       <div className="mb-20 flex flex-wrap items-center justify-center gap-x-24 md:mt-8 md:gap-y-10 lg:mt-20 lg:gap-y-40">
-        {projectItems.map((item, index) => {
+        {projectItems.map(item => {
           const projectData = projectsData.projects[item.key]
 
           if (!projectData) return null
 
           return (
-            <motion.div
-              key={item.id}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.2 }}
-              viewport={{ once: true }}
-              className="flex h-[32rem] w-[80vw] items-center justify-center md:h-[41rem] md:w-[570px] lg:min-h-[32.5rem]">
+            <div
+              className="flex h-[32rem] w-[80vw] items-center justify-center md:h-[41rem] md:w-[570px] lg:min-h-[32.5rem]"
+              key={item.id}>
               <PinContainer
                 title={item.link}
                 href={`https://${item.link}`}
@@ -80,45 +57,33 @@ export const Projects: React.FC<ProjectsProps> = ({ dict }) => {
 
                 <div className="mt-5 mb-2 flex items-center justify-between">
                   <div className="flex items-center">
-                    {item.iconLists.map((icon, iconIndex) => (
-                      <motion.div
-                        key={iconIndex}
-                        initial={{ opacity: 0, scale: 0.5 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        transition={{
-                          duration: 0.3,
-                          delay: index * 0.2 + iconIndex * 0.1,
-                        }}
-                        viewport={{ once: true }}
+                    {item.iconLists.map((icon, index) => (
+                      <div
+                        key={index}
                         className="flex h-8 w-8 items-center justify-center rounded-full border border-white/[.2] bg-black lg:h-10 lg:w-10"
                         style={{
-                          transform: `translateX(-${5 * iconIndex + 2}px)`,
+                          transform: `translateX(-${5 * index + 2}px)`,
                         }}>
                         <Image
                           src={icon}
-                          alt="technology icon"
+                          alt="icon5"
                           width={32}
                           height={32}
                           className="p-2"
                         />
-                      </motion.div>
+                      </div>
                     ))}
                   </div>
 
-                  <motion.div
-                    initial={{ opacity: 0, x: 20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.5, delay: index * 0.2 + 0.3 }}
-                    viewport={{ once: true }}
-                    className="flex items-center justify-center">
+                  <div className="flex items-center justify-center">
                     <p className="text-purple flex text-sm md:text-xs lg:text-xl">
                       Live Site
                     </p>
                     <FaLocationArrow className="ms-3" color="#CBACF9" />
-                  </motion.div>
+                  </div>
                 </div>
               </PinContainer>
-            </motion.div>
+            </div>
           )
         })}
       </div>

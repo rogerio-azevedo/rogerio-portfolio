@@ -21,7 +21,8 @@
     "description": "Experto en construir aplicaciones web escalables y soluciones innovadoras con más de {years} años de experiencia en tecnologías modernas.",
     "cta_projects": "Ver Proyectos",
     "cta_contact": "Contactar",
-    "scroll_down": "Desplazar hacia abajo"
+    "scroll_down": "Desplazar hacia abajo",
+    "show_button": "Ver mis trabajos"
   },
   "about": {
     "title": "Este soy",
@@ -43,6 +44,7 @@
   },
   "techStack": {
     "title": "Algunos de mi Tech Stack",
+    "subtitle": "Tech Stack",
     "categories": {
       "frontend": "Frontend",
       "backend": "Backend",
@@ -197,9 +199,16 @@
     "title": "¿Listo para llevar",
     "title_highlight": "tu",
     "title_end": "presencia digital a nuevas alturas?",
-    "description": "Conectemos y exploremos cómo puedo ayudarte a convertir ideas en resultados impactantes. Contáctame hoy — tu próximo gran paso comienza aquí.",
-    "cta_button": "Hablemos",
-    "copyright": "Copyright © 2025 Rogerio Azevedo"
+    "description": "Hablemos de tu próximo proyecto!",
+    "cta": "Hablemos",
+    "copyright": "2025 Rogério Azevedo. Todos los derechos reservados.",
+    "social": {
+      "github": "GitHub",
+      "linkedin": "LinkedIn",
+      "twitter": "Twitter",
+      "instagram": "Instagram",
+      "whatsapp": "WhatsApp"
+    }
   },
   "ai_assistant": {
     "welcome_message": "¡Hola! 👋 Soy el asistente virtual de Rogerio Azevedo. Puedo ayudarte a conocer más sobre su carrera, proyectos, habilidades técnicas y experiencias profesionales. ¿Qué te gustaría saber?",
@@ -212,5 +221,73 @@
     "input_placeholder": "Escribe tu pregunta...",
     "header_title": "AI Assistant",
     "header_subtitle": "Sobre Rogerio Azevedo"
+  },
+  "knowledge": {
+    "admin": {
+      "title": "Actualización de Conocimiento",
+      "subtitle": "Interfaz personal para actualizar tu base de conocimiento",
+      "welcome_message": "¡Hola! Esta es tu interfaz personal para actualizar tu base de conocimiento. Puedes contarme cualquier cosa sobre ti - cambios en la vida, nuevos hobbies, proyectos, trabajo, etc. Procesaré y organizaré automáticamente. 😊",
+      "placeholder": "Cuéntame algo sobre ti...",
+      "send": "Enviar",
+      "sending": "Enviando",
+      "processing": "Procesando...",
+      "quick_actions": {
+        "hobby_change": "Cambié de hobby...",
+        "new_project": "Nuevo proyecto en el que estoy trabajando...",
+        "professional_update": "Actualización profesional...",
+        "new_skill": "Aprendí una nueva habilidad...",
+        "personal_change": "Cambio personal...",
+        "new_goal": "Objetivo que definí..."
+      },
+      "processed_info": {
+        "title": "Procesado",
+        "category": "Categoría:",
+        "type": "Tipo:",
+        "tags": "Etiquetas:"
+      },
+      "status": {
+        "connected": "Conectado",
+        "updates_today": "actualizaciones hoy"
+      }
+    },
+    "list": {
+      "title": "Base de Conocimiento",
+      "subtitle": "Visualización del conocimiento almacenado en la base de datos vectorial",
+      "stats": {
+        "total_entries": "Total de Entradas",
+        "categories": "Categorías",
+        "active_filters": "Filtros Activos"
+      },
+      "filters": {
+        "title": "Filtros",
+        "category": "Categoría",
+        "all_categories": "Todas las categorías",
+        "search": "Búsqueda Semántica (con tolerancia a errores)",
+        "search_placeholder": "Ej: hobby, proyectos, trabajo... (¡funciona incluso con errores!)",
+        "suggestions": "¿Quisiste decir:"
+      },
+      "categories": {
+        "overview": "Visión General de Categorías",
+        "personal_info": "👤 Información Personal",
+        "hobbies": "🎮 Hobbies e Intereses",
+        "career": "💼 Carrera Profesional",
+        "projects": "🚀 Proyectos",
+        "technical_skills": "⚡ Habilidades Técnicas",
+        "experiences": "🎯 Experiencias",
+        "family": "👨‍👩‍👧‍👦 Familia y Relaciones",
+        "goals": "🎯 Objetivos y Planes",
+        "preferences": "❤️ Preferencias y Gustos",
+        "uncategorized": "❓ Sin Categoría"
+      },
+      "messages": {
+        "loading": "Cargando conocimiento...",
+        "no_results": "No se encontró conocimiento.",
+        "search_active": "Búsqueda difusa activa: intentando",
+        "search_found": "La búsqueda difusa encontró",
+        "results_for": "resultado(s) para",
+        "autocorrect": "💡 Corrección automática aplicada - palabras similares detectadas",
+        "adjust_filters": "Intenta ajustar los filtros o agregar nuevo conocimiento."
+      }
+    }
   }
 }

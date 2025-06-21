@@ -50,7 +50,7 @@ export const TextGenerateEffect = ({
     if (!scope.current) return
 
     animate('span', animationConfig, animationOptions)
-  }, [animate, animationConfig, animationOptions])
+  }, [animate, animationConfig, animationOptions, scope])
 
   useEffect(() => {
     const timer = setTimeout(startAnimation, 50)
@@ -75,7 +75,7 @@ export const TextGenerateEffect = ({
         ))}
       </motion.div>
     ),
-    [wordsArray, highlightAfter, highlightColor, baseColor, filter],
+    [wordsArray, highlightAfter, highlightColor, baseColor, filter, scope],
   )
 
   return (

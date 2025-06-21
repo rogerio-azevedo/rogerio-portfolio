@@ -55,13 +55,14 @@ export const Testimonials: React.FC<TestimonialsProps> = ({ dict }) => {
       },
     )
 
-    if (containerRef.current) {
-      observer.observe(containerRef.current)
+    const currentRef = containerRef.current
+    if (currentRef) {
+      observer.observe(currentRef)
     }
 
     return () => {
-      if (containerRef.current) {
-        observer.unobserve(containerRef.current)
+      if (currentRef) {
+        observer.unobserve(currentRef)
       }
     }
   }, [])
@@ -80,7 +81,7 @@ export const Testimonials: React.FC<TestimonialsProps> = ({ dict }) => {
     <Section
       id="testimonials"
       ref={containerRef}
-      className="relative z-10 w-full bg-gradient-to-br from-slate-900 via-[#00110f] to-black">
+      className="relative z-10 w-full bg-gradient-to-br from-slate-900 via-[#00110f] to-black px-2">
       {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
@@ -151,10 +152,10 @@ export const Testimonials: React.FC<TestimonialsProps> = ({ dict }) => {
           </div>
 
           {/* Center - Main Testimonial Display */}
-          <div className="relative lg:col-span-2">
+          <div className="relative mt-8 lg:col-span-2 lg:mt-0">
             <motion.div
               style={{ scale }}
-              className="relative flex h-[500px] flex-col justify-between overflow-hidden rounded-3xl border border-slate-700/30 bg-gradient-to-br from-slate-800/60 to-slate-900/60 p-12 backdrop-blur-xl">
+              className="relative flex min-h-[500px] flex-col justify-between overflow-hidden rounded-3xl border border-slate-700/30 bg-gradient-to-br from-slate-800/60 to-slate-900/60 p-12 backdrop-blur-xl">
               {/* Metal Shader Background */}
               <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-transparent via-emerald-500/5 to-cyan-500/10" />
 
@@ -205,12 +206,12 @@ export const Testimonials: React.FC<TestimonialsProps> = ({ dict }) => {
                     animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
                     exit={{ opacity: 0, y: -30, filter: 'blur(5px)' }}
                     transition={{ duration: 0.6, ease: 'easeInOut' }}>
-                    <blockquote className="mb-6 flex-1 text-xl leading-relaxed font-light text-slate-200 md:text-2xl">
+                    <blockquote className="text-lf mb-6 flex-1 leading-relaxed font-light text-slate-200 md:text-2xl">
                       &ldquo;{testimonials[activeTestimonial].testimonial}
                       &rdquo;
                     </blockquote>
 
-                    <div className="flex items-center justify-between">
+                    <div className="flex flex-col items-center justify-center gap-4 md:flex-row md:items-center md:justify-between">
                       <div className="flex items-center gap-4">
                         <div className="h-12 w-12 overflow-hidden rounded-full border-2 border-slate-600/50">
                           <Image
@@ -233,7 +234,7 @@ export const Testimonials: React.FC<TestimonialsProps> = ({ dict }) => {
 
                       {/* Interactive Company Logo */}
                       <motion.div
-                        className={`flex items-center justify-center rounded-lg ${handleImageSize(
+                        className={`flex items-center justify-center rounded-lg md:justify-end ${handleImageSize(
                           testimonials[activeTestimonial].companyType,
                         )}`}>
                         {getCompanyLogo(

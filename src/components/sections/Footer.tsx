@@ -35,7 +35,7 @@ export const Footer: React.FC<FooterProps> = ({ dict }) => {
           </p>
           <a href="mailto:rogerio@rogerioazevedo.dev">
             <MagicButton
-              title={dict.footer.cta_button}
+              title={dict.footer.cta}
               icon={<FaLocationArrow />}
               position="right"
             />

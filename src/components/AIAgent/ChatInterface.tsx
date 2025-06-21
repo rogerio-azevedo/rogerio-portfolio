@@ -39,7 +39,7 @@ export default function ChatInterface({
 }: ChatInterfaceProps) {
   const pathname = usePathname()
   const language = getCurrentLanguage(pathname)
-  const { dictionary, loading: dictionaryLoading } = useDictionary(language)
+  const { dictionary } = useDictionary(language)
 
   const [messages, setMessages] = useState<Message[]>([])
   const [sessionId] = useState(() =>

@@ -21,7 +21,8 @@
     "description": "Expert in building scalable web applications and innovative solutions with over {years} years of experience in modern technologies.",
     "cta_projects": "View Projects",
     "cta_contact": "Get in Touch",
-    "scroll_down": "Scroll down"
+    "scroll_down": "Scroll down",
+    "show_button": "See my work"
   },
   "about": {
     "title": "This is",
@@ -198,9 +199,16 @@
     "title": "Ready to take",
     "title_highlight": "your",
     "title_end": "digital presence to new heights?",
-    "description": "Let's connect and explore how I can help you turn ideas into impactful results. Reach out today — your next big step starts here.",
-    "cta_button": "Let's get in touch",
-    "copyright": "Copyright © 2025 Rogerio Azevedo"
+    "description": "Let's talk about your next project!",
+    "cta": "Let's talk",
+    "copyright": "2025 Rogério Azevedo. All rights reserved.",
+    "social": {
+      "github": "GitHub",
+      "linkedin": "LinkedIn",
+      "twitter": "Twitter",
+      "instagram": "Instagram",
+      "whatsapp": "WhatsApp"
+    }
   },
   "ai_assistant": {
     "welcome_message": "Hello! 👋 I'm Rogerio Azevedo's virtual assistant. I can help you learn more about his career, projects, technical skills, and professional experiences. What would you like to know?",
@@ -213,5 +221,73 @@
     "input_placeholder": "Type your question...",
     "header_title": "AI Assistant",
     "header_subtitle": "About Rogerio Azevedo"
+  },
+  "knowledge": {
+    "admin": {
+      "title": "Knowledge Update",
+      "subtitle": "Personal interface to update your knowledge base",
+      "welcome_message": "Hello! This is your personal interface to update your knowledge base. You can tell me anything about you - life changes, new hobbies, projects, work, etc. I'll process and organize automatically. 😊",
+      "placeholder": "Tell me something about yourself...",
+      "send": "Send",
+      "sending": "Sending",
+      "processing": "Processing...",
+      "quick_actions": {
+        "hobby_change": "Changed my hobby...",
+        "new_project": "New project I'm working on...",
+        "professional_update": "Professional update...",
+        "new_skill": "Learned a new skill...",
+        "personal_change": "Personal change...",
+        "new_goal": "Goal I set..."
+      },
+      "processed_info": {
+        "title": "Processed",
+        "category": "Category:",
+        "type": "Type:",
+        "tags": "Tags:"
+      },
+      "status": {
+        "connected": "Connected",
+        "updates_today": "updates today"
+      }
+    },
+    "list": {
+      "title": "Knowledge Base",
+      "subtitle": "Visualization of knowledge stored in the vector database",
+      "stats": {
+        "total_entries": "Total Entries",
+        "categories": "Categories",
+        "active_filters": "Active Filters"
+      },
+      "filters": {
+        "title": "Filters",
+        "category": "Category",
+        "all_categories": "All categories",
+        "search": "Semantic Search (with error tolerance)",
+        "search_placeholder": "Ex: hobby, projects, work... (works even with typos!)",
+        "suggestions": "Did you mean:"
+      },
+      "categories": {
+        "overview": "Categories Overview",
+        "personal_info": "👤 Personal Information",
+        "hobbies": "🎮 Hobbies and Interests",
+        "career": "💼 Professional Career",
+        "projects": "🚀 Projects",
+        "technical_skills": "⚡ Technical Skills",
+        "experiences": "🎯 Experiences",
+        "family": "👨‍👩‍👧‍👦 Family and Relationships",
+        "goals": "🎯 Goals and Plans",
+        "preferences": "❤️ Preferences and Tastes",
+        "uncategorized": "❓ Uncategorized"
+      },
+      "messages": {
+        "loading": "Loading knowledge...",
+        "no_results": "No knowledge found.",
+        "search_active": "Fuzzy search active: trying",
+        "search_found": "Fuzzy search found",
+        "results_for": "result(s) for",
+        "autocorrect": "💡 Autocorrect applied - similar words detected",
+        "adjust_filters": "Try adjusting filters or adding new knowledge."
+      }
+    }
   }
 }

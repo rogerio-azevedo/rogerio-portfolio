@@ -74,7 +74,7 @@ export const FloatingNav = ({ navItems, className }: NavItemProps) => {
 
     window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+  }, [activeSection])
 
   const scrollToSection = (sectionId: string) => {
     const section = document.getElementById(sectionId)
@@ -103,7 +103,7 @@ export const FloatingNav = ({ navItems, className }: NavItemProps) => {
           duration: 0.2,
         }}
         className={cn(
-          'border-black/.1 fixed inset-x-0 top-4 z-[5000] mx-auto flex max-w-fit items-center justify-center space-x-2 rounded-lg border px-4 py-3 shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] md:top-10 md:min-w-[70vw] md:space-x-4 md:px-10 md:py-5 lg:min-w-fit',
+          'border-black/.1 fixed inset-x-0 top-4 z-[5000] mx-auto hidden max-w-fit items-center justify-center space-x-2 rounded-lg border px-4 py-3 shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] md:top-10 md:flex md:min-w-[70vw] md:space-x-4 md:px-10 md:py-5 lg:min-w-fit',
           className,
         )}
         style={{
@@ -123,7 +123,7 @@ export const FloatingNav = ({ navItems, className }: NavItemProps) => {
               className={cn(
                 'relative flex items-center space-x-1 rounded-md px-2 py-1 text-sm transition-colors duration-200 md:px-3 md:py-1',
                 isActive
-                  ? 'bg-white/10 text-purple-300'
+                  ? 'bg-white/10 text-emerald-400'
                   : 'text-neutral-300 hover:bg-white/5 hover:text-neutral-100',
               )}>
               <span className="block sm:hidden">{navItem.icon}</span>
@@ -131,7 +131,7 @@ export const FloatingNav = ({ navItems, className }: NavItemProps) => {
               {isActive && (
                 <motion.div
                   layoutId="activeSection"
-                  className="absolute inset-0 rounded-md bg-purple-500/20"
+                  className="absolute inset-0 rounded-md bg-emerald-400/20"
                   initial={false}
                   transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                 />

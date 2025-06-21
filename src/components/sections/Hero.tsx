@@ -10,6 +10,8 @@ import { Section } from '@/components/Section'
 import { AnimatedBackground } from '../ui/AnimatedBackground'
 import { FloatingElements } from '../ui/FloatingElements'
 import { WorldGlobe } from '../WorldGlobe'
+import { FaLocationArrow } from 'react-icons/fa'
+import { MagicButton } from '../ui/MagicButton'
 
 interface HeroProps {
   dict: Dictionary
@@ -30,11 +32,16 @@ const staggerContainer = {
   },
 }
 
-// const scaleIn = {
-//   initial: { scale: 0.8, opacity: 0 },
-//   animate: { scale: 1, opacity: 1 },
-//   transition: { duration: 0.6, ease: 'backOut' },
-// }
+const scrollToSection = (sectionId: string) => {
+  const section = document.getElementById(sectionId)
+  if (section) {
+    const offsetTop = section.offsetTop
+    window.scrollTo({
+      top: offsetTop - 80,
+      behavior: 'smooth',
+    })
+  }
+}
 
 export default function Hero({ dict }: HeroProps) {
   const heroData = dict.hero
@@ -82,65 +89,34 @@ export default function Hero({ dict }: HeroProps) {
           </div>
 
           {/* CTAs */}
+          <div className="pointer-events-auto">
+            <MagicButton
+              title={dict.hero.show_button}
+              icon={<FaLocationArrow />}
+              position="right"
+              handleClick={() => scrollToSection('projects')}
+            />
+          </div>
+        </motion.div>
+
+        {/* Scroll Indicator */}
+        <motion.div
+          variants={fadeInUp}
+          className="hidden flex-col items-center text-white/50 lg:flex">
+          <span className="mb-3 text-sm">{heroData.scroll_down}</span>
           <motion.div
-            variants={fadeInUp}
-            className="mb-16 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <motion.button
-              whileHover={{ scale: 1.05, y: -2 }}
-              whileTap={{ scale: 0.95 }}
-              className="group relative rounded-full bg-gradient-to-r from-emerald-500 to-green-500 px-8 py-4 font-semibold text-white shadow-2xl transition-all duration-300 hover:shadow-emerald-400/30">
-              <span className="relative z-10">{heroData.cta_projects}</span>
-              <div className="absolute inset-0 rounded-full bg-gradient-to-r from-emerald-600 to-green-600 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-            </motion.button>
-
-            <motion.button
-              whileHover={{ scale: 1.05, y: -2 }}
-              whileTap={{ scale: 0.95 }}
-              className="group rounded-full border-2 border-emerald-400/40 px-8 py-4 font-semibold text-white backdrop-blur-sm transition-all duration-300 hover:border-emerald-400/60 hover:bg-emerald-400/10">
-              {heroData.cta_contact}
-            </motion.button>
-          </motion.div>
-
-          {/* Social Links */}
-          {/* <motion.div
-            variants={scaleIn}
-            className="mb-16 flex items-center justify-center gap-6">
-            {[
-              { icon: Github, href: '#', label: 'GitHub' },
-              { icon: Linkedin, href: '#', label: 'LinkedIn' },
-              { icon: Mail, href: '#', label: 'Email' },
-            ].map(({ icon: Icon, href, label }) => (
-              <motion.a
-                key={label}
-                href={href}
-                whileHover={{ scale: 1.2, y: -3 }}
-                whileTap={{ scale: 0.9 }}
-                className="flex h-12 w-12 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white/70 backdrop-blur-sm transition-all duration-300 hover:border-emerald-400/50 hover:bg-emerald-400/10 hover:text-white"
-                aria-label={label}>
-                <Icon size={20} />
-              </motion.a>
-            ))}
-          </motion.div> */}
-
-          {/* Scroll Indicator */}
-          <motion.div
-            variants={fadeInUp}
-            className="flex flex-col items-center text-white/50">
-            <span className="mb-3 text-sm">{heroData.scroll_down}</span>
+            animate={{ y: [0, 10, 0] }}
+            transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+            className="flex h-10 w-6 justify-center rounded-full border-2 border-white/30">
             <motion.div
-              animate={{ y: [0, 10, 0] }}
-              transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-              className="flex h-10 w-6 justify-center rounded-full border-2 border-white/30">
-              <motion.div
-                animate={{ y: [0, 12, 0] }}
-                transition={{
-                  duration: 2,
-                  repeat: Infinity,
-                  ease: 'easeInOut',
-                }}
-                className="mt-2 h-3 w-1 rounded-full bg-white/50"
-              />
-            </motion.div>
+              animate={{ y: [0, 12, 0] }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                ease: 'easeInOut',
+              }}
+              className="mt-2 h-3 w-1 rounded-full bg-white/50"
+            />
           </motion.div>
         </motion.div>
       </Section>
