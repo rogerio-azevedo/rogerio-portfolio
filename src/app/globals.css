@@ -151,6 +151,17 @@ html {
   font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
 }
 
+/* Safe area para mobile */
+.safe-area-pb {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* Previne overflow horizontal */
+.prevent-overflow {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
 /* Suporte para OpenType features da Inter */
 .text-inter-optimized {
   font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';

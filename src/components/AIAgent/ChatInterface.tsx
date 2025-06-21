@@ -42,30 +42,30 @@ export default function ChatInterface({
   const { dictionary } = useDictionary(language)
 
   const [messages, setMessages] = useState<Message[]>([])
+  const [inputMessage, setInputMessage] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
   const [sessionId] = useState(() =>
     typeof window !== 'undefined'
       ? `session_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`
       : 'session_ssr',
   )
-
-  useEffect(() => {
-    if (dictionary) {
-      setMessages([
-        {
-          id: '1',
-          content: dictionary.ai_assistant.welcome_message,
-          role: 'assistant',
-          timestamp: new Date().toISOString(),
-        },
-      ])
-    }
-  }, [dictionary])
-  const [inputMessage, setInputMessage] = useState('')
-  const [isLoading, setIsLoading] = useState(false)
-  const [showSpeechBubble, setShowSpeechBubble] = useState(false)
   const messagesEndRef = useRef<HTMLDivElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
 
+  // Inicializar com mensagem de boas-vindas
+  useEffect(() => {
+    if (dictionary && messages.length === 0) {
+      const welcomeMessage: Message = {
+        id: '1',
+        content: dictionary.ai_assistant.welcome_message,
+        role: 'assistant',
+        timestamp: new Date().toISOString(),
+      }
+      setMessages([welcomeMessage])
+    }
+  }, [dictionary, messages.length])
+
+  // Auto scroll para a última mensagem
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
   }
@@ -81,24 +81,7 @@ export default function ChatInterface({
   }, [isOpen])
 
   useEffect(() => {
-    const showTimer = setTimeout(() => {
-      setShowSpeechBubble(true)
-    }, 1000)
-
-    const hideTimer = setTimeout(() => {
-      setShowSpeechBubble(false)
-    }, 6000)
-
-    return () => {
-      clearTimeout(showTimer)
-      clearTimeout(hideTimer)
-    }
-  }, [])
-
-  useEffect(() => {
-    if (isOpen) {
-      setShowSpeechBubble(false)
-    } else {
+    if (!isOpen) {
       if (dictionary) {
         setMessages([
           {
@@ -168,7 +151,9 @@ export default function ChatInterface({
 
       const errorMessage: Message = {
         id: (Date.now() + 1).toString(),
-        content: dictionary?.ai_assistant.error_message || 'Erro desconhecido',
+        content:
+          dictionary?.ai_assistant.error_message ||
+          'Sorry, there was an error processing your request.',
         role: 'assistant',
         timestamp: new Date().toISOString(),
       }
@@ -195,14 +180,17 @@ export default function ChatInterface({
 
   return (
     <>
-      <div className="fixed right-4 bottom-20 z-50 md:right-6 md:bottom-6">
+      {/* Floating Button */}
+      <div
+        className={`fixed right-8 bottom-8 z-30 transition-all duration-300 ${isOpen ? 'pointer-events-none scale-75 opacity-0' : 'scale-100 opacity-100'}`}>
+        {/* Speech Bubble */}
         <AnimatePresence>
-          {showSpeechBubble && !isOpen && (
+          {!isOpen && (
             <motion.div
-              initial={{ opacity: 0, y: 20, scale: 0.8 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: 20, scale: 0.8 }}
-              transition={{ duration: 0.3 }}
+              initial={{ opacity: 0, scale: 0.8, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.8, y: 20 }}
+              transition={{ delay: 1, duration: 0.5 }}
               className="absolute right-0 bottom-24 mb-2 w-32 rounded-lg border border-gray-200 bg-white p-2 shadow-lg md:bottom-32 md:w-36 md:p-3 dark:border-gray-700 dark:bg-gray-800">
               <p className="text-center text-xs leading-tight text-gray-800 md:text-sm dark:text-gray-200">
                 {dictionary?.ai_assistant.speech_bubble.line1}
@@ -249,11 +237,11 @@ export default function ChatInterface({
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 100, scale: 0.95 }}
             transition={{ duration: 0.3, type: 'spring', stiffness: 100 }}
-            className="fixed top-24 right-6 bottom-6 left-6 z-40 flex flex-col overflow-hidden rounded-lg border border-gray-200 bg-white shadow-2xl md:top-auto md:right-12 md:bottom-40 md:left-auto md:h-[500px] md:w-[420px] dark:border-gray-700 dark:bg-gray-900">
+            className="prevent-overflow fixed inset-0 z-30 flex flex-col overflow-hidden bg-white shadow-2xl md:inset-auto md:top-auto md:right-12 md:bottom-40 md:h-[500px] md:w-[420px] md:max-w-[calc(100vw-3rem)] md:rounded-lg md:border md:border-gray-200 dark:bg-gray-900 dark:md:border-gray-700">
             {/* Header */}
             <div className="flex items-center justify-between bg-gradient-to-r from-purple-600 to-blue-600 p-4 text-white">
-              <div className="flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center overflow-hidden rounded-full bg-white/20">
+              <div className="flex min-w-0 flex-1 items-center gap-3">
+                <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center overflow-hidden rounded-full bg-white/20">
                   <Image
                     src={devinho}
                     alt="Devinho"
@@ -285,98 +273,105 @@ export default function ChatInterface({
               </button>
             </div>
 
-            <div className="flex-1 space-y-4 overflow-y-auto p-4 md:p-6">
-              {messages.map(message => (
-                <motion.div
-                  key={message.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3 }}
-                  className={`flex gap-3 ${
-                    message.role === 'user' ? 'justify-end' : 'justify-start'
-                  }`}>
-                  {message.role === 'assistant' && (
-                    <div className="mt-1 flex h-8 w-8 flex-shrink-0 items-center justify-center md:h-10 md:w-10">
-                      <Image
-                        src={devinho}
-                        alt="Devinho"
-                        width={40}
-                        height={40}
-                        className="h-full w-full rounded-full object-cover shadow-sm"
-                        quality={90}
-                        sizes="(max-width: 768px) 32px, 40px"
-                        unoptimized={true}
-                      />
-                    </div>
-                  )}
-
-                  <div
-                    className={`max-w-[80%] ${message.role === 'user' ? 'order-2' : ''}`}>
-                    <div
-                      className={`rounded-lg p-3 ${
+            {/* Messages Area */}
+            <div className="min-h-0 flex-1 overflow-x-hidden overflow-y-auto">
+              <div className="flex min-h-full flex-col justify-end">
+                <div className="space-y-4 p-4 pb-2 md:p-6 md:pb-4">
+                  {messages.map(message => (
+                    <motion.div
+                      key={message.id}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.3 }}
+                      className={`flex gap-3 ${
                         message.role === 'user'
-                          ? 'bg-gradient-to-r from-purple-600 to-blue-600 text-white'
-                          : 'bg-gray-100 text-gray-900 dark:bg-gray-800 dark:text-white'
+                          ? 'justify-end'
+                          : 'justify-start'
                       }`}>
-                      <p className="text-sm whitespace-pre-wrap">
-                        {message.content}
-                      </p>
-                    </div>
-                    <p className="mt-1 px-1 text-xs text-gray-500">
-                      {formatTime(message.timestamp)}
-                    </p>
-                  </div>
+                      {message.role === 'assistant' && (
+                        <div className="mt-1 flex h-8 w-8 flex-shrink-0 items-center justify-center md:h-10 md:w-10">
+                          <Image
+                            src={devinho}
+                            alt="Devinho"
+                            width={40}
+                            height={40}
+                            className="h-full w-full rounded-full object-cover shadow-sm"
+                            quality={90}
+                            sizes="(max-width: 768px) 32px, 40px"
+                            unoptimized={true}
+                          />
+                        </div>
+                      )}
 
-                  {message.role === 'user' && (
-                    <div className="order-3 mt-1 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-gray-200 md:h-10 md:w-10 dark:bg-gray-700">
-                      <User
-                        size={16}
-                        className="text-gray-500 md:h-5 md:w-5 dark:text-gray-400"
-                      />
-                    </div>
+                      <div
+                        className={`max-w-[calc(100%-4rem)] min-w-0 md:max-w-[70%] ${message.role === 'user' ? 'order-2' : ''}`}>
+                        <div
+                          className={`rounded-2xl p-3 md:p-4 ${
+                            message.role === 'user'
+                              ? 'bg-gradient-to-r from-purple-600 to-blue-600 text-white'
+                              : 'bg-gray-100 text-gray-900 dark:bg-gray-800 dark:text-white'
+                          }`}>
+                          <p className="overflow-wrap-anywhere text-sm leading-relaxed break-words hyphens-auto whitespace-pre-wrap">
+                            {message.content}
+                          </p>
+                        </div>
+                        <p className="mt-2 px-2 text-xs text-gray-500">
+                          {formatTime(message.timestamp)}
+                        </p>
+                      </div>
+
+                      {message.role === 'user' && (
+                        <div className="order-3 mt-1 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-gray-200 md:h-10 md:w-10 dark:bg-gray-700">
+                          <User
+                            size={16}
+                            className="text-gray-500 md:h-5 md:w-5 dark:text-gray-400"
+                          />
+                        </div>
+                      )}
+                    </motion.div>
+                  ))}
+
+                  {isLoading && (
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      className="flex gap-3">
+                      <div className="mt-1 flex h-8 w-8 flex-shrink-0 items-center justify-center md:h-10 md:w-10">
+                        <Image
+                          src={devinho}
+                          alt="Devinho"
+                          width={40}
+                          height={40}
+                          className="h-full w-full rounded-full object-cover shadow-sm"
+                          quality={90}
+                          sizes="(max-width: 768px) 32px, 40px"
+                          unoptimized={true}
+                        />
+                      </div>
+                      <div className="rounded-2xl bg-gray-100 p-3 md:p-4 dark:bg-gray-800">
+                        <div className="flex space-x-1">
+                          <div
+                            className="h-2 w-2 animate-bounce rounded-full bg-gray-400"
+                            style={{ animationDelay: '0ms' }}></div>
+                          <div
+                            className="h-2 w-2 animate-bounce rounded-full bg-gray-400"
+                            style={{ animationDelay: '150ms' }}></div>
+                          <div
+                            className="h-2 w-2 animate-bounce rounded-full bg-gray-400"
+                            style={{ animationDelay: '300ms' }}></div>
+                        </div>
+                      </div>
+                    </motion.div>
                   )}
-                </motion.div>
-              ))}
 
-              {isLoading && (
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  className="flex gap-3">
-                  <div className="mt-1 flex h-8 w-8 flex-shrink-0 items-center justify-center md:h-10 md:w-10">
-                    <Image
-                      src={devinho}
-                      alt="Devinho"
-                      width={40}
-                      height={40}
-                      className="h-full w-full rounded-full object-cover shadow-sm"
-                      quality={90}
-                      sizes="(max-width: 768px) 32px, 40px"
-                      unoptimized={true}
-                    />
-                  </div>
-                  <div className="rounded-lg bg-gray-100 p-3 dark:bg-gray-800">
-                    <div className="flex space-x-1">
-                      <div
-                        className="h-2 w-2 animate-bounce rounded-full bg-gray-400"
-                        style={{ animationDelay: '0ms' }}></div>
-                      <div
-                        className="h-2 w-2 animate-bounce rounded-full bg-gray-400"
-                        style={{ animationDelay: '150ms' }}></div>
-                      <div
-                        className="h-2 w-2 animate-bounce rounded-full bg-gray-400"
-                        style={{ animationDelay: '300ms' }}></div>
-                    </div>
-                  </div>
-                </motion.div>
-              )}
-
-              <div ref={messagesEndRef} />
+                  <div ref={messagesEndRef} />
+                </div>
+              </div>
             </div>
 
-            {/* Input */}
-            <div className="border-t border-gray-200 p-4 md:p-6 dark:border-gray-700">
-              <div className="flex gap-2">
+            {/* Input Area - Sticky no mobile */}
+            <div className="safe-area-pb sticky bottom-0 border-t border-gray-200 bg-white p-3 md:p-6 dark:border-gray-700 dark:bg-gray-900">
+              <div className="flex gap-2 md:gap-3 lg:pb-4">
                 <input
                   ref={inputRef}
                   type="text"
@@ -387,14 +382,14 @@ export default function ChatInterface({
                     dictionary?.ai_assistant.input_placeholder ||
                     'Digite sua pergunta...'
                   }
-                  className="flex-1 rounded-lg border border-gray-300 p-2 text-sm focus:ring-2 focus:ring-purple-500 focus:outline-none dark:border-gray-600 dark:bg-gray-800 dark:text-white"
+                  className="min-w-0 flex-1 rounded-xl border border-gray-300 bg-white px-3 py-2 text-base focus:ring-2 focus:ring-purple-500 focus:outline-none md:px-4 md:py-3 md:text-sm dark:border-gray-600 dark:bg-gray-800 dark:text-white"
                   disabled={isLoading}
                 />
                 <button
                   onClick={sendMessage}
                   disabled={!inputMessage.trim() || isLoading}
-                  className="rounded-lg bg-gradient-to-r from-purple-600 to-blue-600 p-2 text-white transition-all duration-200 hover:from-purple-700 hover:to-blue-700 disabled:cursor-not-allowed disabled:from-gray-400 disabled:to-gray-500">
-                  <Send size={16} />
+                  className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-gradient-to-r from-purple-600 to-blue-600 text-white transition-all duration-200 hover:from-purple-700 hover:to-blue-700 disabled:cursor-not-allowed disabled:from-gray-400 disabled:to-gray-500 md:h-12 md:w-12">
+                  <Send size={18} className="md:h-5 md:w-5" />
                 </button>
               </div>
             </div>

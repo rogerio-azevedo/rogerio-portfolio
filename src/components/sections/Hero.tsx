@@ -102,7 +102,7 @@ export default function Hero({ dict }: HeroProps) {
         {/* Scroll Indicator */}
         <motion.div
           variants={fadeInUp}
-          className="hidden flex-col items-center text-white/50 lg:flex">
+          className="mt-16 hidden flex-col items-center text-white/50 lg:flex">
           <span className="mb-3 text-sm">{heroData.scroll_down}</span>
           <motion.div
             animate={{ y: [0, 10, 0] }}

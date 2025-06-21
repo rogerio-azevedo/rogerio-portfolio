@@ -14,23 +14,16 @@ const anthropic = new Anthropic({
 })
 
 // Função para buscar configurações do sistema da base de conhecimento
-async function getSystemConfig(): Promise<{
+async function getSystemConfig(language: string = 'pt'): Promise<{
   systemPrompt: string
   offTopicResponse: string
   noDataResponse: string
   curiosities: string[]
 }> {
   try {
-    const { searchMemories } = await import('@/lib/supabase-vector')
-    const results = await searchMemories(
-      'SISTEMA_PROMPTS configurações assistente',
-      1,
-      0.3,
-    )
-
-    if (results.length > 0) {
-      // Parse das configurações da base de conhecimento
-      return {
+    // Configurações por idioma
+    const configs = {
+      pt: {
         systemPrompt: `Você é o assistente do Rogerio Azevedo. 
 
 REGRAS CRÍTICAS:
@@ -39,6 +32,7 @@ REGRAS CRÍTICAS:
 3. TOM CASUAL: WhatsApp style com emojis
 4. TERMINE SEMPRE: Frases completas, nunca corte
 5. USE SÓ OS DADOS: Nunca invente nada
+6. RESPONDA EM PORTUGUÊS
 
 FOCO: "Vender" o Rogerio destacando seus projetos e habilidades.
 
@@ -58,15 +52,74 @@ Posso te contar sobre sua carreira profissional, projetos ou tecnologias. O que 
           'Rogerio já trabalhou em diversos projetos interessantes - quer saber mais sobre algum específico?',
           'Além de programador, ele tem hobbies interessantes - posso contar mais se você perguntar!',
         ],
-      }
+      },
+      en: {
+        systemPrompt: `You are Rogerio Azevedo's assistant.
+
+CRITICAL RULES:
+1. VERY SHORT RESPONSE: Maximum 1-2 sentences
+2. ONE TOPIC ONLY: Talk about 1 specific hobby/project
+3. CASUAL TONE: WhatsApp style with emojis
+4. ALWAYS FINISH: Complete sentences, never cut off
+5. USE ONLY DATA: Never invent anything
+6. RESPOND IN ENGLISH
+
+FOCUS: "Sell" Rogerio highlighting his projects and skills.
+
+Use ONLY the provided information. If you don't know, redirect.`,
+
+        offTopicResponse: `Sorry, I'm Rogerio's assistant and I only know facts related to him and his career.
+
+Want to know something interesting? 🤔`,
+
+        noDataResponse: `I don't have that specific information about Rogerio in my knowledge base.
+
+I can tell you about his professional career, projects or technologies. What would you like to know? 🤔`,
+
+        curiosities: [
+          'Rogerio is an experienced full-stack developer focused on React, TypeScript and Node.js!',
+          'He has experience in technical leadership and communication with C-level executives!',
+          'Rogerio has worked on several interesting projects - want to know more about a specific one?',
+          'Besides programming, he has interesting hobbies - I can tell you more if you ask!',
+        ],
+      },
+      es: {
+        systemPrompt: `Eres el asistente de Rogerio Azevedo.
+
+REGLAS CRÍTICAS:
+1. RESPUESTA MUY CORTA: Máximo 1-2 frases
+2. UN SOLO TEMA: Habla de 1 hobby/proyecto específico
+3. TONO CASUAL: Estilo WhatsApp con emojis
+4. SIEMPRE TERMINA: Frases completas, nunca cortes
+5. USA SOLO LOS DATOS: Nunca inventes nada
+6. RESPONDE EN ESPAÑOL
+
+ENFOQUE: "Vender" a Rogerio destacando sus proyectos y habilidades.
+
+Usa SOLO la información proporcionada. Si no sabes, redirige.`,
+
+        offTopicResponse: `Lo siento, soy el asistente de Rogerio y solo sé hechos relacionados con él y su carrera.
+
+¿Quieres saber algo interesante? 🤔`,
+
+        noDataResponse: `No tengo esa información específica sobre Rogerio en mi base de conocimiento.
+
+Puedo contarte sobre su carrera profesional, proyectos o tecnologías. ¿Qué te gustaría saber? 🤔`,
+
+        curiosities: [
+          '¡Rogerio es un desarrollador full-stack experimentado enfocado en React, TypeScript y Node.js!',
+          '¡Tiene experiencia en liderazgo técnico y comunicación con ejecutivos de nivel C!',
+          'Rogerio ha trabajado en varios proyectos interesantes - ¿quieres saber más sobre alguno específico?',
+          '¡Además de programar, tiene hobbies interesantes - puedo contarte más si preguntas!',
+        ],
+      },
     }
 
-    // Fallback para valores padrão se não encontrar na base
-    throw new Error('Configurações não encontradas na base')
+    return configs[language as keyof typeof configs] || configs.pt
   } catch (error) {
     console.error('❌ Erro ao buscar configurações, usando fallback:', error)
 
-    // Fallback com configurações básicas
+    // Fallback básico em português
     return {
       systemPrompt: `Você é o assistente do Rogerio Azevedo. Use apenas as informações fornecidas.`,
       offTopicResponse: `Desculpe, eu sou o assistente do Rogerio e sei apenas sobre fatos relacionados a ele.`,
@@ -137,14 +190,61 @@ async function isQueryRelevantToRogerio(query: string): Promise<boolean> {
 }
 
 // Função para buscar informações relevantes da base vetorial
-async function getRelevantKnowledge(query: string): Promise<string> {
+async function getRelevantKnowledge(
+  query: string,
+  language: string = 'pt',
+): Promise<string> {
   try {
     const { searchMemories } = await import('@/lib/supabase-vector')
 
-    console.log('🔍 Buscando conhecimento para query:', query)
+    console.log(
+      '🔍 Buscando conhecimento para query:',
+      query,
+      'idioma:',
+      language,
+    )
 
     // Busca conhecimentos similares na base vetorial com threshold otimizado
-    const relevantKnowledge = await searchMemories(query, 5, 0.3)
+    let relevantKnowledge = await searchMemories(query, 5, 0.3)
+
+    // Se não encontrou resultados suficientes, tenta traduzir a query para português
+    // (já que a base de conhecimento pode estar principalmente em português)
+    if (relevantKnowledge.length < 2 && language !== 'pt') {
+      console.log(
+        '🔄 Poucos resultados encontrados, tentando busca expandida...',
+      )
+
+      // Palavras-chave de tradução simples para melhorar busca
+      const translations = {
+        'tiempo libre': 'tempo livre hobbies',
+        'free time': 'tempo livre hobbies',
+        hobbies: 'hobbies tempo livre',
+        pasatiempos: 'hobbies tempo livre',
+        'que hace': 'o que faz atividades',
+        'what does': 'o que faz atividades',
+        trabajo: 'trabalho carreira',
+        work: 'trabalho carreira',
+        proyectos: 'projetos',
+        projects: 'projetos',
+        tecnologias: 'tecnologias habilidades',
+        technologies: 'tecnologias habilidades',
+        experiencia: 'experiência carreira',
+        experience: 'experiência carreira',
+      }
+
+      let expandedQuery = query.toLowerCase()
+      for (const [foreign, portuguese] of Object.entries(translations)) {
+        if (expandedQuery.includes(foreign)) {
+          expandedQuery = expandedQuery.replace(foreign, portuguese)
+        }
+      }
+
+      if (expandedQuery !== query.toLowerCase()) {
+        console.log('🌐 Tentando busca traduzida:', expandedQuery)
+        const translatedResults = await searchMemories(expandedQuery, 5, 0.3)
+        relevantKnowledge = [...relevantKnowledge, ...translatedResults]
+      }
+    }
 
     console.log('📚 Conhecimentos encontrados:', relevantKnowledge.length)
 
@@ -174,9 +274,15 @@ async function getRelevantKnowledge(query: string): Promise<string> {
       return formattedKnowledge
     }
 
+    // Remove duplicatas baseado no conteúdo
+    const uniqueKnowledge = relevantKnowledge.filter(
+      (item, index, self) =>
+        index === self.findIndex(k => k.content === item.content),
+    )
+
     // Formata os conhecimentos encontrados
     let formattedKnowledge = '\n\nCONHECIMENTO RELEVANTE:\n'
-    relevantKnowledge.forEach((knowledge, index) => {
+    uniqueKnowledge.slice(0, 5).forEach((knowledge, index) => {
       formattedKnowledge += `${index + 1}. ${knowledge.content}\n`
     })
 
@@ -193,6 +299,7 @@ export async function POST(request: NextRequest) {
   try {
     const {
       message,
+      language = 'pt', // Parâmetro de idioma
       sessionId = 'default', // ID da sessão para memória vetorial
     } = await request.json()
 
@@ -202,6 +309,8 @@ export async function POST(request: NextRequest) {
         { status: 400 },
       )
     }
+
+    console.log('🌐 Idioma detectado:', language)
 
     // 🔒 COMANDO SECRETO: Detectar se é uma atualização de conhecimento
     if (
@@ -296,14 +405,14 @@ Processe esta informação:`
 
         // Retorna resposta especial para atualização de conhecimento
         return NextResponse.json({
-          message: `✅ **Conhecimento atualizado via chat!**\n\n📂 **Categoria:** ${processedInfo.categoria}\n🔄 **Tipo:** ${processedInfo.tipo_atualizacao}\n📝 **Processado:** ${processedInfo.informacao_processada}\n🏷️ **Tags:** ${processedInfo.palavras_chave.join(', ')}\n\n*Agora posso usar essa informação nas próximas conversas!* 😊`,
+          message: `✅ **Conhecimento atualizado via chat!**\n\n📂 **Categoria:** ${processedInfo.categoria}\n🔄 **Tipo:** ${processedInfo.tipo_atualizacao}\n📝 **Processado:** ${processedInfo.informacao_processada}\n🏷️ **Tags:** ${(processedInfo.palavras_chave || []).join(', ')}\n\n*Agora posso usar essa informação nas próximas conversas!* 😊`,
           timestamp: new Date().toISOString(),
           isKnowledgeUpdate: true,
           processedInfo: {
             categoria: processedInfo.categoria,
             tipo: processedInfo.tipo_atualizacao,
             conteudo: processedInfo.informacao_processada,
-            palavrasChave: processedInfo.palavras_chave,
+            palavrasChave: processedInfo.palavras_chave || [],
           },
         })
       } catch (error) {
@@ -319,7 +428,7 @@ Processe esta informação:`
     const isRelevant = await isQueryRelevantToRogerio(message)
     if (!isRelevant) {
       // Busca configurações e seleciona uma curiosidade aleatória
-      const config = await getSystemConfig()
+      const config = await getSystemConfig(language)
       const randomCuriosity =
         config.curiosities[
           Math.floor(Math.random() * config.curiosities.length)
@@ -357,8 +466,8 @@ Processe esta informação:`
       vectorContext.substring(0, 200) + '...',
     )
 
-    // Busca informações relevantes da base vetorial
-    const relevantKnowledge = await getRelevantKnowledge(message)
+    // Busca informações relevantes da base vetorial com melhor suporte multilíngue
+    const relevantKnowledge = await getRelevantKnowledge(message, language)
 
     // Log para verificar os dados incluídos no prompt
     console.log(
@@ -372,10 +481,33 @@ Processe esta informação:`
     const targetTokens = 100 // Tokens que queremos
     const maxTokens = 200 // Espaço generoso para evitar truncamento
 
-    // Busca configurações do sistema
-    const config = await getSystemConfig()
+    // Busca configurações do sistema baseadas no idioma
+    const config = await getSystemConfig(language)
 
-    // Cria o prompt do sistema simplificado
+    // Cria o prompt do sistema com suporte a idiomas
+    const languageInstructions = {
+      pt: 'RESPONDA SEMPRE EM PORTUGUÊS - NUNCA use palavras em outros idiomas',
+      en: 'ALWAYS RESPOND IN ENGLISH - NEVER use words in other languages',
+      es: 'SIEMPRE RESPONDE EN ESPAÑOL - NUNCA uses palabras en otros idiomas',
+    }
+
+    // Instruções específicas de tradução por idioma
+    const translationInstructions = {
+      pt: '',
+      en: `
+🌐 TRANSLATION REQUIREMENT:
+- Information below is in Portuguese
+- You MUST translate EVERYTHING to English
+- Examples: "violão" → "guitar", "música sertaneja" → "country music", "filhas" → "daughters"
+- Write your ENTIRE response in English only`,
+      es: `
+🌐 REQUISITO DE TRADUCCIÓN:
+- La información abajo está en portugués  
+- DEBES traducir TODO al español
+- Ejemplos: "violão" → "guitarra", "música sertaneja" → "música country", "filhas" → "hijas"
+- Escribe TODA tu respuesta solo en español`,
+    }
+
     const systemPrompt = `⚠️ ATENÇÃO: ZERO INVENÇÃO PERMITIDA ⚠️
 
 REGRAS ABSOLUTAS:
@@ -384,6 +516,9 @@ REGRAS ABSOLUTAS:
 3. PROIBIDO inventar: hobbies, atividades, características pessoais
 4. Máximo ${targetTokens} tokens - seja direto e conciso
 5. SEMPRE termine frases adequadamente
+6. ${languageInstructions[language as keyof typeof languageInstructions] || languageInstructions.pt}
+7. TRADUZA todas as informações para o idioma solicitado - NÃO misture idiomas
+${translationInstructions[language as keyof typeof translationInstructions] || ''}
 
 DADOS REAIS SOBRE ROGERIO (USE APENAS ISTO):
 
@@ -392,12 +527,18 @@ ${config.systemPrompt}${vectorContext}
 INFORMAÇÕES SOBRE ROGERIO AZEVEDO:${relevantKnowledge}`
 
     console.log(
-      '🎯 Prompt final com controle de tamanho:',
+      '🎯 Prompt final com controle de tamanho e idioma:',
       systemPrompt.substring(0, 300) + '...',
     )
 
-    // Adiciona instrução de concisão à pergunta do usuário
-    const enhancedMessage = `${message}\n\nresponda de forma sucinta com um parágrafo apenas.`
+    // Adiciona instrução de concisão à pergunta do usuário baseada no idioma
+    const concisionInstructions = {
+      pt: 'responda de forma sucinta com um parágrafo apenas.',
+      en: 'respond concisely with just one paragraph.',
+      es: 'responde de forma concisa con solo un párrafo.',
+    }
+
+    const enhancedMessage = `${message}\n\n${concisionInstructions[language as keyof typeof concisionInstructions] || concisionInstructions.pt}`
 
     console.log('🎯 Mensagem com instrução de concisão:', enhancedMessage)
 

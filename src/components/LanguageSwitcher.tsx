@@ -8,6 +8,7 @@ import { startTransition, useState, useEffect, useRef } from 'react'
 
 interface LanguageSwitcherProps {
   currentLang: Locale
+  isChatOpen?: boolean
 }
 
 const languages = {
@@ -18,6 +19,7 @@ const languages = {
 
 export default function LanguageSwitcher({
   currentLang,
+  isChatOpen = false,
 }: LanguageSwitcherProps) {
   const pathname = usePathname()
   const [isOpen, setIsOpen] = useState(false)
@@ -57,7 +59,13 @@ export default function LanguageSwitcher({
   }
 
   return (
-    <div className="fixed top-4 right-4 z-50" ref={dropdownRef}>
+    <div
+      className={`fixed top-4 right-4 transition-all duration-300 ${
+        isChatOpen
+          ? 'pointer-events-none z-30 opacity-0 md:pointer-events-auto md:opacity-100'
+          : 'z-50'
+      }`}
+      ref={dropdownRef}>
       <div className="relative">
         <motion.button
           onClick={toggleDropdown}

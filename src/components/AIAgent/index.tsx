@@ -3,7 +3,11 @@
 import { useState, useEffect } from 'react'
 import ChatInterface from './ChatInterface'
 
-export default function AIAgent() {
+interface AIAgentProps {
+  onChatToggle?: (isOpen: boolean) => void
+}
+
+export default function AIAgent({ onChatToggle }: AIAgentProps) {
   const [isChatOpen, setIsChatOpen] = useState(false)
   const [mounted, setMounted] = useState(false)
 
@@ -12,7 +16,9 @@ export default function AIAgent() {
   }, [])
 
   const toggleChat = () => {
-    setIsChatOpen(!isChatOpen)
+    const newState = !isChatOpen
+    setIsChatOpen(newState)
+    onChatToggle?.(newState)
   }
 
   // Evita problemas de hidratação ao renderizar apenas após o mount

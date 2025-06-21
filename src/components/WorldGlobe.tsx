@@ -209,8 +209,8 @@ export function WorldGlobe() {
   ]
 
   return (
-    <div className="absolute top-32 flex h-full w-full items-center justify-center overflow-hidden md:top-30">
-      <div className="relative mx-auto h-96 w-full max-w-7xl md:h-[700px]">
+    <div className="absolute top-24 flex h-full w-full items-center justify-center overflow-hidden pb-30 md:top-30">
+      <div className="relative mx-auto h-96 w-full max-w-4xl md:h-[700px]">
         <div className="absolute z-10 mt-40 h-96 w-full md:h-full">
           <World data={globalArcs} globeConfig={globeConfig} />
         </div>

@@ -2,8 +2,7 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import '../globals.css'
 import { Locale } from './dictionaries'
-import LanguageSwitcher from '@/components/LanguageSwitcher'
-import AIAgent from '@/components/AIAgent'
+import ClientLayout from '@/components/ClientLayout'
 import Script from 'next/script'
 
 const inter = Inter({
@@ -101,6 +100,10 @@ export default async function RootLayout({
   return (
     <html lang={lang}>
       <head>
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+        />
         <Script
           src="https://cdn.amplitude.com/libs/analytics-browser-2.11.1-min.js.gz"
           strategy="beforeInteractive"
@@ -123,9 +126,7 @@ export default async function RootLayout({
       </head>
 
       <body className={`${inter.variable} font-sans antialiased`}>
-        <LanguageSwitcher currentLang={lang} />
-        {children}
-        <AIAgent />
+        <ClientLayout currentLang={lang}>{children}</ClientLayout>
       </body>
     </html>
   )
