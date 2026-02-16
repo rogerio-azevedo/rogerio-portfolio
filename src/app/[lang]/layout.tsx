@@ -15,7 +15,7 @@ export async function generateStaticParams() {
   return [{ lang: 'pt' }, { lang: 'en' }, { lang: 'es' }]
 }
 
-// Metadata dinâmica baseada no idioma
+// Metadata dinâmica baseada no idioma.
 export async function generateMetadata({
   params,
 }: {
