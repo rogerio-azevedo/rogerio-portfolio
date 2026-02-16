@@ -192,6 +192,10 @@
       "escovato": {
         "title": "Sitio Web del Salón de Belleza Escovato",
         "description": "Desarrollado un sitio web institucional moderno y elegante para Escovato, un salón de belleza de alto nivel, enfocándose en estética premium, responsividad y una experiencia de usuario perfecta."
+      },
+      "sindicopro": {
+        "title": "SindicoPro",
+        "description": "Sistema de gestión para administradores de edificios, con control de morosidad, asambleas y comunicación con residentes."
       }
     }
   },

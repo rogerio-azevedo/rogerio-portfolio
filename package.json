@@ -6,13 +6,16 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "db:setup": "psql $DATABASE_URL -f src/data/neon-setup.sql",
+    "db:restore": "psql $DATABASE_URL -f scripts/restore-output.sql",
+    "db:extract-backup": "node scripts/restore-from-supabase-backup.mjs"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.54.0",
+    "@neondatabase/serverless": "^1.0.2",
     "@react-three/drei": "^10.3.0",
     "@react-three/fiber": "^9.1.2",
-    "@supabase/supabase-js": "^2.50.0",
     "clsx": "^2.1.1",
     "framer-motion": "^12.18.1",
     "fuse.js": "^7.1.0",

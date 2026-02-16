@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server'
-import { clearAllKnowledge, getKnowledgeStats } from '@/lib/supabase-vector'
+import { clearAllKnowledge, getKnowledgeStats } from '@/lib/vector-store'
 
 export async function POST() {
   try {

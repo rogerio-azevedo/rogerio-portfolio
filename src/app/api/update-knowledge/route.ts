@@ -2,7 +2,7 @@
 
 import { NextRequest, NextResponse } from 'next/server'
 import OpenAI from 'openai'
-import { addMemory, searchMemories } from '@/lib/supabase-vector'
+import { addMemory, searchMemories } from '@/lib/vector-store'
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,

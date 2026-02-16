@@ -2,11 +2,11 @@
 import analyticsImage from '@assets/images/projects/analytics.png'
 import meuiotImage from '@assets/images/projects/meuiot.png'
 import escovaltoImage from '@assets/images/projects/escovato.png'
-// import sindicoproImage from '@assets/images/projects/sindicopro.png'
+import sindicoproImage from '@assets/images/projects/sindicopro.png'
 
 // Import dos ícones das tecnologias
 import reactIcon from '@assets/images/tech/react.svg'
-// import nextIcon from '@assets/images/tech/next.svg'
+import nextIcon from '@assets/images/tech/next.svg'
 import typescriptIcon from '@assets/images/tech/typescript.svg'
 import tailwindIcon from '@assets/images/tech/tailwind.svg'
 import nodejsIcon from '@assets/images/tech/nodejs.svg'
@@ -62,19 +62,18 @@ export const projectItems: ProjectItem[] = [
     iconLists: [reactIcon, tailwindIcon, typescriptIcon],
     link: 'escovato.com.br',
   },
-  // Projeto comentado - descomente se quiser adicionar
-  // {
-  //   key: 'sindicopro',
-  //   id: 3,
-  //   img: sindicoproImage,
-  //   iconLists: [
-  //     reactIcon,
-  //     nextIcon,
-  //     tailwindIcon,
-  //     typescriptIcon,
-  //     nestjsIcon,
-  //     graphqlIcon,
-  //   ],
-  //   link: 'sindicopro.adm.br',
-  // },
+  {
+    key: 'sindicopro',
+    id: 3,
+    img: sindicoproImage,
+    iconLists: [
+      reactIcon,
+      nextIcon,
+      tailwindIcon,
+      typescriptIcon,
+      nestjsIcon,
+      graphqlIcon,
+    ],
+    link: 'sindicopro.adm.br',
+  },
 ]

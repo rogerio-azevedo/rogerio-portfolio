@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { clearSessionMemory } from '@/lib/supabase-vector'
+import { clearSessionMemory } from '@/lib/vector-store'
 
 export async function POST(request: NextRequest) {
   try {

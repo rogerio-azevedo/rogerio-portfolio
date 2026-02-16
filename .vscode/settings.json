@@ -36,7 +36,7 @@
     "**/.nyc_output/**": true
   },
   "typescript.disableAutomaticTypeAcquisition": true,
-  "extensions.ignoreRecommendations": false,
+  "extensions.ignoreRecommendations": true,
   "emmet.includeLanguages": {
     "javascript": "javascriptreact",
     "typescript": "typescriptreact"

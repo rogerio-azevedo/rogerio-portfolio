@@ -15,77 +15,120 @@ export async function generateStaticParams() {
   return [{ lang: 'pt' }, { lang: 'en' }, { lang: 'es' }]
 }
 
-export const metadata: Metadata = {
-  title: {
-    default: 'Rogério - Senior Software Engineer Portfolio',
-    template: '%s | Rogério Portfolio',
-  },
-  description:
-    'Portfolio of Rogério, a senior software engineer specialized in scalable systems, modern frontend, robust backend, and cloud solutions.',
-  keywords: [
-    'Rogério',
-    'Portfolio',
-    'Software Engineer',
-    'Senior Developer',
-    'Next.js',
-    'React',
-    'Node.js',
-    'TypeScript',
-    'Tailwind CSS',
-    'AWS',
-    'Fullstack',
-    'Projects',
-  ],
-  authors: [{ name: 'Rogério', url: 'https://azevedo.dev.br' }],
-  creator: 'Rogério',
-  publisher: 'Rogério',
-  metadataBase: new URL('https://azevedo.dev.br'),
-  alternates: {
-    canonical: 'https://azevedo.dev.br',
-  },
-  openGraph: {
-    title: 'Rogério - Senior Software Engineer Portfolio',
-    description:
-      'Portfolio of Rogério, a senior software engineer specialized in scalable systems, modern frontend, robust backend, and cloud solutions.',
-    url: 'https://azevedo.dev.br',
-    siteName: 'Rogério Portfolio',
-    images: [
-      {
-        url: '/og-image.png',
-        width: 1200,
-        height: 630,
-        alt: 'Rogério - Senior Software Engineer',
-      },
+// Metadata dinâmica baseada no idioma
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ lang: Locale }>
+}): Promise<Metadata> {
+  const { lang } = await params
+
+  const metadata = {
+    pt: {
+      title: 'Rogério - Engenheiro de Software Sênior',
+      description:
+        'Portfólio do Rogério, engenheiro de software sênior especializado em sistemas escaláveis, frontend moderno, backend robusto e soluções em nuvem.',
+      ogTitle: 'Rogério - Engenheiro de Software Sênior',
+      ogDescription:
+        'Portfólio do Rogério, engenheiro de software sênior especializado em sistemas escaláveis, frontend moderno, backend robusto e soluções em nuvem.',
+      locale: 'pt_BR',
+    },
+    en: {
+      title: 'Rogério - Senior Software Engineer',
+      description:
+        'Portfolio of Rogério, a senior software engineer specialized in scalable systems, modern frontend, robust backend, and cloud solutions.',
+      ogTitle: 'Rogério - Senior Software Engineer',
+      ogDescription:
+        'Portfolio of Rogério, a senior software engineer specialized in scalable systems, modern frontend, robust backend, and cloud solutions.',
+      locale: 'en_US',
+    },
+    es: {
+      title: 'Rogério - Ingeniero de Software Senior',
+      description:
+        'Portafolio de Rogério, ingeniero de software senior especializado en sistemas escalables, frontend moderno, backend robusto y soluciones en la nube.',
+      ogTitle: 'Rogério - Ingeniero de Software Senior',
+      ogDescription:
+        'Portafolio de Rogério, ingeniero de software senior especializado en sistemas escalables, frontend moderno, backend robusto y soluciones en la nube.',
+      locale: 'es_ES',
+    },
+  }
+
+  const currentMetadata = metadata[lang] || metadata.en
+
+  return {
+    title: {
+      default: currentMetadata.title,
+      template: `%s | ${currentMetadata.title}`,
+    },
+    description: currentMetadata.description,
+    keywords: [
+      'Rogério',
+      'Portfolio',
+      'Software Engineer',
+      'Senior Developer',
+      'Next.js',
+      'React',
+      'Node.js',
+      'TypeScript',
+      'Tailwind CSS',
+      'AWS',
+      'Fullstack',
+      'Projects',
     ],
-    locale: 'en_US',
-    type: 'website',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Rogério - Senior Software Engineer Portfolio',
-    description:
-      'Portfolio of Rogério, a senior software engineer specialized in scalable systems, modern frontend, robust backend, and cloud solutions.',
-    images: ['/og-image.png'],
-  },
-  icons: {
-    icon: '/favicon.ico',
-    shortcut: '/favicon.ico',
-    // apple: '/apple-touch-icon.png',
-  },
-  category: 'technology',
-  robots: {
-    index: true,
-    follow: true,
-    nocache: false,
-    googleBot: {
+    authors: [{ name: 'Rogério', url: 'https://azevedo.dev.br' }],
+    creator: 'Rogério',
+    publisher: 'Rogério',
+    metadataBase: new URL('https://azevedo.dev.br'),
+    alternates: {
+      canonical: `https://azevedo.dev.br/${lang}`,
+      languages: {
+        'pt-BR': 'https://azevedo.dev.br/pt',
+        'en-US': 'https://azevedo.dev.br/en',
+        'es-ES': 'https://azevedo.dev.br/es',
+      },
+    },
+    openGraph: {
+      title: currentMetadata.ogTitle,
+      description: currentMetadata.ogDescription,
+      url: `https://azevedo.dev.br/${lang}`,
+      siteName: 'Rogério Portfolio',
+      images: [
+        {
+          url: `/api/og?lang=${lang}`,
+          width: 1200,
+          height: 630,
+          alt: currentMetadata.title,
+        },
+      ],
+      locale: currentMetadata.locale,
+      type: 'website',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: currentMetadata.ogTitle,
+      description: currentMetadata.ogDescription,
+      images: [`/api/og?lang=${lang}`],
+    },
+    icons: {
+      icon: '/favicon.ico',
+      shortcut: '/favicon.ico',
+      // apple: '/apple-touch-icon.png',
+    },
+    category: 'technology',
+    robots: {
       index: true,
       follow: true,
-      noimageindex: false,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
+      nocache: false,
+      googleBot: {
+        index: true,
+        follow: true,
+        noimageindex: false,
+        'max-video-preview': -1,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+      },
     },
-  },
+  }
 }
 
 export default async function RootLayout({

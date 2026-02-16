@@ -6,7 +6,7 @@ import {
   storeConversation,
   findSimilarConversations,
   createContextFromSimilarConversations,
-} from '@/lib/supabase-vector'
+} from '@/lib/vector-store'
 // Token estimator removido - usamos prompt direto agora
 
 const anthropic = new Anthropic({
@@ -132,7 +132,7 @@ Puedo contarte sobre su carrera profesional, proyectos o tecnologías. ¿Qué te
 // Função para verificar se a pergunta é relevante usando busca semântica
 async function isQueryRelevantToRogerio(query: string): Promise<boolean> {
   try {
-    const { searchMemories } = await import('@/lib/supabase-vector')
+    const { searchMemories } = await import('@/lib/vector-store')
 
     // Busca na base de conhecimento incluindo as categorias
     const results = await searchMemories(query, 3, 0.4)
@@ -195,7 +195,7 @@ async function getRelevantKnowledge(
   language: string = 'pt',
 ): Promise<string> {
   try {
-    const { searchMemories } = await import('@/lib/supabase-vector')
+    const { searchMemories } = await import('@/lib/vector-store')
 
     console.log(
       '🔍 Buscando conhecimento para query:',
@@ -331,7 +331,7 @@ export async function POST(request: NextRequest) {
 
       try {
         // Usa a mesma funcionalidade do endpoint de update-knowledge
-        const { addMemory } = await import('@/lib/supabase-vector')
+        const { addMemory } = await import('@/lib/vector-store')
 
         // Processo similar ao endpoint de update-knowledge
         const processAndCategorizeUpdate = async (userInput: string) => {

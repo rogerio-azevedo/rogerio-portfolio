@@ -14,8 +14,8 @@ export const Projects: React.FC<ProjectsProps> = ({ dict }) => {
       className="relative z-10 w-full bg-gradient-to-br from-slate-900 via-emerald-900 to-slate-900"
       id="projects">
       <h1 className="text-center text-4xl font-bold text-white md:text-5xl">
-        A small selection of{' '}
-        <span className="text-emerald-400">recent projects</span>
+        {projectsData.title}{' '}
+        <span className="text-emerald-400">{projectsData.subtitle}</span>
       </h1>
       <div className="mb-20 flex flex-wrap items-center justify-center gap-x-24 md:mt-8 md:gap-y-10 lg:mt-20 lg:gap-y-40">
         {projectItems.map(item => {

@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 import { NextRequest, NextResponse } from 'next/server'
-import { searchMemories, initSupabase } from '@/lib/supabase-vector'
+import { searchMemories, listAllKnowledge } from '@/lib/vector-store'
 
 export async function GET(request: NextRequest) {
   try {
@@ -15,46 +15,9 @@ export async function GET(request: NextRequest) {
     let results = []
 
     if (query) {
-      // Se há uma query, faz busca semântica
       results = await searchMemories(query, limit, 0.3)
     } else {
-      // Se não há query específica, busca diretamente no Supabase
-      try {
-        const supabase = await initSupabase()
-        if (supabase) {
-          const { data, error } = await supabase
-            .from('knowledge_base')
-            .select('*')
-            .order('created_at', { ascending: false })
-            .limit(limit)
-
-          if (error) throw error
-
-          // Formata os dados para o formato esperado
-          results = data
-            ? data.map((row: any) => ({
-                id: row.id,
-                content: row.content,
-                metadata: row.metadata,
-                timestamp: row.created_at,
-              }))
-            : []
-        } else {
-          // Fallback para busca semântica se Supabase não disponível
-          results = await searchMemories(
-            'conhecimento informações dados pessoais profissionais hobbies projetos habilidades',
-            limit,
-            0.01,
-          )
-        }
-      } catch (error) {
-        console.error('Erro ao buscar no Supabase, usando fallback:', error)
-        results = await searchMemories(
-          'conhecimento informações dados pessoais profissionais hobbies projetos habilidades',
-          limit,
-          0.01,
-        )
-      }
+      results = await listAllKnowledge(limit)
     }
 
     // Processa os resultados para exibição

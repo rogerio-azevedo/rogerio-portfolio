@@ -192,6 +192,10 @@
       "escovato": {
         "title": "Escovato Beauty Salon Website",
         "description": "Developed a modern and elegant institutional website for Escovato, a high-end beauty salon, focusing on premium aesthetics, responsiveness, and a seamless user experience."
+      },
+      "sindicopro": {
+        "title": "SindicoPro",
+        "description": "Property management system for building managers and administrators, with delinquency control, meetings and communication with residents."
       }
     }
   },
